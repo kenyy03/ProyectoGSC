@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VeterinariaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbcirugia">
+          <Key>
+            <PropertyRef Name="cod_cirugia" />
+          </Key>
+          <Property Name="cod_cirugia" Type="int" Nullable="false" />
+          <Property Name="cod_paciente" Type="int" Nullable="false" />
+          <Property Name="duracion_minutos" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="anestesia" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbCita">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+          </Key>
+          <Property Name="cod_cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_cita" Type="date" Nullable="false" />
+          <Property Name="hora_cita" Type="int" Nullable="false" />
+          <Property Name="cod_paciente" Type="int" Nullable="false" />
+          <Property Name="descrip_cita" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="cod_medico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbDUENO">
+          <Key>
+            <PropertyRef Name="cod_dueno" />
+          </Key>
+          <Property Name="cod_dueno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbEmpleado">
+          <Key>
+            <PropertyRef Name="cod_empleado" />
+          </Key>
+          <Property Name="cod_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_ing" Type="date" Nullable="false" />
+          <Property Name="cod_puesto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbenfermedad">
+          <Key>
+            <PropertyRef Name="cod_enfermedad" />
+          </Key>
+          <Property Name="cod_enfermedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbenferXRaza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+            <PropertyRef Name="cod_enfermedad" />
+          </Key>
+          <Property Name="cod_raza" Type="int" Nullable="false" />
+          <Property Name="cod_enfermedad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbespecie">
+          <Key>
+            <PropertyRef Name="cod_especie" />
+          </Key>
+          <Property Name="cod_especie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_familia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbfamilia">
+          <Key>
+            <PropertyRef Name="cod_familia" />
+          </Key>
+          <Property Name="cod_familia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="29" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmedicina">
+          <Key>
+            <PropertyRef Name="cod_medicina" />
+          </Key>
+          <Property Name="cod_medicina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="dosis" Type="int" Nullable="false" />
+          <Property Name="uomdosis" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="frecuencia" Type="int" Nullable="false" />
+          <Property Name="uom_frecuencia" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmedixenfer">
+          <Key>
+            <PropertyRef Name="cod_medicina" />
+            <PropertyRef Name="cod_enfermedad" />
+          </Key>
+          <Property Name="cod_medicina" Type="int" Nullable="false" />
+          <Property Name="cod_enfermedad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbmedixreceta">
+          <Key>
+            <PropertyRef Name="cod_receta" />
+            <PropertyRef Name="cod_medicina" />
+          </Key>
+          <Property Name="cod_receta" Type="int" Nullable="false" />
+          <Property Name="cod_medicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbpaciente">
+          <Key>
+            <PropertyRef Name="cod_paciente" />
+          </Key>
+          <Property Name="cod_paciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="fecha_nac" Type="date" />
+          <Property Name="cod_especie" Type="int" Nullable="false" />
+          <Property Name="cod_dueno" Type="int" Nullable="false" />
+          <Property Name="cod_medico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbPuesto">
+          <Key>
+            <PropertyRef Name="cod_puesto" />
+          </Key>
+          <Property Name="cod_puesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_puesto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="salario" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbraza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="longevidad" Type="int" />
+          <Property Name="cod_especie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbReceta">
+          <Key>
+            <PropertyRef Name="cod_receta" />
+          </Key>
+          <Property Name="cod_receta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_paciente" Type="int" Nullable="false" />
+          <Property Name="duracion" Type="int" />
+        </EntityType>
+        <EntityType Name="TbTelefonoDueno">
+          <Key>
+            <PropertyRef Name="cod_dueno" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="cod_dueno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbTelEmpleado">
+          <Key>
+            <PropertyRef Name="cod_empleado" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="cod_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbtiporiesgc">
+          <Key>
+            <PropertyRef Name="cod_cirugia" />
+          </Key>
+          <Property Name="cod_cirugia" Type="int" Nullable="false" />
+          <Property Name="riesgo" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbTurno">
+          <Key>
+            <PropertyRef Name="cod_turno" />
+          </Key>
+          <Property Name="cod_turno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="hora_inicio" Type="int" Nullable="false" />
+          <Property Name="hora_fin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbturnoxempleado">
+          <Key>
+            <PropertyRef Name="cod_turno" />
+            <PropertyRef Name="cod_empleado" />
+          </Key>
+          <Property Name="cod_turno" Type="int" Nullable="false" />
+          <Property Name="cod_empleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbusuario">
+          <Key>
+            <PropertyRef Name="cod_user" />
+          </Key>
+          <Property Name="cod_emp" Type="int" />
+          <Property Name="cod_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+          <Property Name="contrasena" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="tbcirugia_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbcirugia" Type="Self.tbcirugia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbcirugia">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbcita_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="tbCita" Type="Self.tbCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbCita">
+              <PropertyRef Name="cod_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbcita_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbCita" Type="Self.tbCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbCita">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbEmpleado_tbpuesto_fk">
+          <End Role="tbPuesto" Type="Self.tbPuesto" Multiplicity="1" />
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPuesto">
+              <PropertyRef Name="cod_puesto" />
+            </Principal>
+            <Dependent Role="tbEmpleado">
+              <PropertyRef Name="cod_puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbenferxraza_tbenfermedad_fk">
+          <End Role="tbenfermedad" Type="Self.tbenfermedad" Multiplicity="1" />
+          <End Role="tbenferXRaza" Type="Self.tbenferXRaza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbenfermedad">
+              <PropertyRef Name="cod_enfermedad" />
+            </Principal>
+            <Dependent Role="tbenferXRaza">
+              <PropertyRef Name="cod_enfermedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbenferxraza_tbraza_fk">
+          <End Role="tbraza" Type="Self.tbraza" Multiplicity="1" />
+          <End Role="tbenferXRaza" Type="Self.tbenferXRaza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbraza">
+              <PropertyRef Name="cod_raza" />
+            </Principal>
+            <Dependent Role="tbenferXRaza">
+              <PropertyRef Name="cod_raza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbespecie_tbfamilia_fk">
+          <End Role="tbfamilia" Type="Self.tbfamilia" Multiplicity="1" />
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbfamilia">
+              <PropertyRef Name="cod_familia" />
+            </Principal>
+            <Dependent Role="tbespecie">
+              <PropertyRef Name="cod_familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbmedixenfer_tbenfermedad_fk">
+          <End Role="tbenfermedad" Type="Self.tbenfermedad" Multiplicity="1" />
+          <End Role="tbmedixenfer" Type="Self.tbmedixenfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbenfermedad">
+              <PropertyRef Name="cod_enfermedad" />
+            </Principal>
+            <Dependent Role="tbmedixenfer">
+              <PropertyRef Name="cod_enfermedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbmedixenfer_tbmedicina_fk">
+          <End Role="tbmedicina" Type="Self.tbmedicina" Multiplicity="1" />
+          <End Role="tbmedixenfer" Type="Self.tbmedixenfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbmedicina">
+              <PropertyRef Name="cod_medicina" />
+            </Principal>
+            <Dependent Role="tbmedixenfer">
+              <PropertyRef Name="cod_medicina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbmedixreceta_tbmedicina_fk">
+          <End Role="tbmedicina" Type="Self.tbmedicina" Multiplicity="1" />
+          <End Role="tbmedixreceta" Type="Self.tbmedixreceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbmedicina">
+              <PropertyRef Name="cod_medicina" />
+            </Principal>
+            <Dependent Role="tbmedixreceta">
+              <PropertyRef Name="cod_medicina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbmedixreceta_tbreceta_fk">
+          <End Role="tbReceta" Type="Self.tbReceta" Multiplicity="1" />
+          <End Role="tbmedixreceta" Type="Self.tbmedixreceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbReceta">
+              <PropertyRef Name="cod_receta" />
+            </Principal>
+            <Dependent Role="tbmedixreceta">
+              <PropertyRef Name="cod_receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbdueno_fk">
+          <End Role="tbDUENO" Type="Self.tbDUENO" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDUENO">
+              <PropertyRef Name="cod_dueno" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_dueno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbespecie_fk">
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbespecie">
+              <PropertyRef Name="cod_especie" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbraza_tbespecie_fk">
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="1" />
+          <End Role="tbraza" Type="Self.tbraza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbespecie">
+              <PropertyRef Name="cod_especie" />
+            </Principal>
+            <Dependent Role="tbraza">
+              <PropertyRef Name="cod_especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbreceta_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbReceta" Type="Self.tbReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbReceta">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbtelefonoDueno_tbdueno_fk">
+          <End Role="tbDUENO" Type="Self.tbDUENO" Multiplicity="1" />
+          <End Role="TbTelefonoDueno" Type="Self.TbTelefonoDueno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDUENO">
+              <PropertyRef Name="cod_dueno" />
+            </Principal>
+            <Dependent Role="TbTelefonoDueno">
+              <PropertyRef Name="cod_dueno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbTelEmpleado_TBEMPLEADO_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="tbTelEmpleado" Type="Self.tbTelEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbTelEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbtiporiesgc_tbcirugia">
+          <End Role="tbcirugia" Type="Self.tbcirugia" Multiplicity="1" />
+          <End Role="tbtiporiesgc" Type="Self.tbtiporiesgc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcirugia">
+              <PropertyRef Name="cod_cirugia" />
+            </Principal>
+            <Dependent Role="tbtiporiesgc">
+              <PropertyRef Name="cod_cirugia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbturnoXempleado_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="tbturnoxempleado" Type="Self.tbturnoxempleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbturnoxempleado">
+              <PropertyRef Name="cod_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbturnoXempleado_tbturno_fk">
+          <End Role="tbTurno" Type="Self.tbTurno" Multiplicity="1" />
+          <End Role="tbturnoxempleado" Type="Self.tbturnoxempleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTurno">
+              <PropertyRef Name="cod_turno" />
+            </Principal>
+            <Dependent Role="tbturnoxempleado">
+              <PropertyRef Name="cod_turno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbuser_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="0..1" />
+          <End Role="tbusuario" Type="Self.tbusuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbusuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VeterinariaModelStoreContainer">
+          <EntitySet Name="tbcirugia" EntityType="Self.tbcirugia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCita" EntityType="Self.tbCita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDUENO" EntityType="Self.tbDUENO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbEmpleado" EntityType="Self.tbEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbenfermedad" EntityType="Self.tbenfermedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbenferXRaza" EntityType="Self.tbenferXRaza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbespecie" EntityType="Self.tbespecie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbfamilia" EntityType="Self.tbfamilia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbmedicina" EntityType="Self.tbmedicina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbmedixenfer" EntityType="Self.tbmedixenfer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbmedixreceta" EntityType="Self.tbmedixreceta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbpaciente" EntityType="Self.Tbpaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPuesto" EntityType="Self.tbPuesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbraza" EntityType="Self.tbraza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbReceta" EntityType="Self.tbReceta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TbTelefonoDueno" EntityType="Self.TbTelefonoDueno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbTelEmpleado" EntityType="Self.tbTelEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbtiporiesgc" EntityType="Self.tbtiporiesgc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbTurno" EntityType="Self.tbTurno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbturnoxempleado" EntityType="Self.tbturnoxempleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbusuario" EntityType="Self.tbusuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="tbcirugia_tbpaciente_fk" Association="Self.tbcirugia_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+            <End Role="tbcirugia" EntitySet="tbcirugia" />
+          </AssociationSet>
+          <AssociationSet Name="tbcita_tbempleado_fk" Association="Self.tbcita_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+            <End Role="tbCita" EntitySet="tbCita" />
+          </AssociationSet>
+          <AssociationSet Name="tbcita_tbpaciente_fk" Association="Self.tbcita_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+            <End Role="tbCita" EntitySet="tbCita" />
+          </AssociationSet>
+          <AssociationSet Name="tbEmpleado_tbpuesto_fk" Association="Self.tbEmpleado_tbpuesto_fk">
+            <End Role="tbPuesto" EntitySet="tbPuesto" />
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="tbenferxraza_tbenfermedad_fk" Association="Self.tbenferxraza_tbenfermedad_fk">
+            <End Role="tbenfermedad" EntitySet="tbenfermedad" />
+            <End Role="tbenferXRaza" EntitySet="tbenferXRaza" />
+          </AssociationSet>
+          <AssociationSet Name="tbenferxraza_tbraza_fk" Association="Self.tbenferxraza_tbraza_fk">
+            <End Role="tbraza" EntitySet="tbraza" />
+            <End Role="tbenferXRaza" EntitySet="tbenferXRaza" />
+          </AssociationSet>
+          <AssociationSet Name="tbespecie_tbfamilia_fk" Association="Self.tbespecie_tbfamilia_fk">
+            <End Role="tbfamilia" EntitySet="tbfamilia" />
+            <End Role="tbespecie" EntitySet="tbespecie" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixenfer_tbenfermedad_fk" Association="Self.tbmedixenfer_tbenfermedad_fk">
+            <End Role="tbenfermedad" EntitySet="tbenfermedad" />
+            <End Role="tbmedixenfer" EntitySet="tbmedixenfer" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixenfer_tbmedicina_fk" Association="Self.tbmedixenfer_tbmedicina_fk">
+            <End Role="tbmedicina" EntitySet="tbmedicina" />
+            <End Role="tbmedixenfer" EntitySet="tbmedixenfer" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixreceta_tbmedicina_fk" Association="Self.tbmedixreceta_tbmedicina_fk">
+            <End Role="tbmedicina" EntitySet="tbmedicina" />
+            <End Role="tbmedixreceta" EntitySet="tbmedixreceta" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixreceta_tbreceta_fk" Association="Self.tbmedixreceta_tbreceta_fk">
+            <End Role="tbReceta" EntitySet="tbReceta" />
+            <End Role="tbmedixreceta" EntitySet="tbmedixreceta" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbdueno_fk" Association="Self.tbpaciente_tbdueno_fk">
+            <End Role="tbDUENO" EntitySet="tbDUENO" />
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbempleado_fk" Association="Self.tbpaciente_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbespecie_fk" Association="Self.tbpaciente_tbespecie_fk">
+            <End Role="tbespecie" EntitySet="tbespecie" />
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+          </AssociationSet>
+          <AssociationSet Name="tbraza_tbespecie_fk" Association="Self.tbraza_tbespecie_fk">
+            <End Role="tbespecie" EntitySet="tbespecie" />
+            <End Role="tbraza" EntitySet="tbraza" />
+          </AssociationSet>
+          <AssociationSet Name="tbreceta_tbpaciente_fk" Association="Self.tbreceta_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpaciente" />
+            <End Role="tbReceta" EntitySet="tbReceta" />
+          </AssociationSet>
+          <AssociationSet Name="tbtelefonoDueno_tbdueno_fk" Association="Self.tbtelefonoDueno_tbdueno_fk">
+            <End Role="tbDUENO" EntitySet="tbDUENO" />
+            <End Role="TbTelefonoDueno" EntitySet="TbTelefonoDueno" />
+          </AssociationSet>
+          <AssociationSet Name="tbTelEmpleado_TBEMPLEADO_fk" Association="Self.tbTelEmpleado_TBEMPLEADO_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+            <End Role="tbTelEmpleado" EntitySet="tbTelEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="tbtiporiesgc_tbcirugia" Association="Self.tbtiporiesgc_tbcirugia">
+            <End Role="tbcirugia" EntitySet="tbcirugia" />
+            <End Role="tbtiporiesgc" EntitySet="tbtiporiesgc" />
+          </AssociationSet>
+          <AssociationSet Name="tbturnoXempleado_tbempleado_fk" Association="Self.tbturnoXempleado_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+            <End Role="tbturnoxempleado" EntitySet="tbturnoxempleado" />
+          </AssociationSet>
+          <AssociationSet Name="tbturnoXempleado_tbturno_fk" Association="Self.tbturnoXempleado_tbturno_fk">
+            <End Role="tbTurno" EntitySet="tbTurno" />
+            <End Role="tbturnoxempleado" EntitySet="tbturnoxempleado" />
+          </AssociationSet>
+          <AssociationSet Name="tbuser_tbempleado_fk" Association="Self.tbuser_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleado" />
+            <End Role="tbusuario" EntitySet="tbusuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VeterinariaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbcirugia">
+          <Key>
+            <PropertyRef Name="cod_cirugia" />
+          </Key>
+          <Property Name="cod_cirugia" Type="Int32" Nullable="false" />
+          <Property Name="cod_paciente" Type="Int32" Nullable="false" />
+          <Property Name="duracion_minutos" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="anestesia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tbpaciente" Relationship="Self.tbcirugia_tbpaciente_fk" FromRole="tbcirugia" ToRole="Tbpaciente" />
+          <NavigationProperty Name="tbtiporiesgc" Relationship="Self.tbtiporiesgc_tbcirugia" FromRole="tbcirugia" ToRole="tbtiporiesgc" />
+        </EntityType>
+        <EntityType Name="tbCita">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+          </Key>
+          <Property Name="cod_cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_cita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hora_cita" Type="Int32" Nullable="false" />
+          <Property Name="cod_paciente" Type="Int32" Nullable="false" />
+          <Property Name="descrip_cita" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cod_medico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbEmpleado" Relationship="Self.tbcita_tbempleado_fk" FromRole="tbCita" ToRole="tbEmpleado" />
+          <NavigationProperty Name="Tbpaciente" Relationship="Self.tbcita_tbpaciente_fk" FromRole="tbCita" ToRole="Tbpaciente" />
+        </EntityType>
+        <EntityType Name="tbDUENO">
+          <Key>
+            <PropertyRef Name="cod_dueno" />
+          </Key>
+          <Property Name="cod_dueno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tbpacientes" Relationship="Self.tbpaciente_tbdueno_fk" FromRole="tbDUENO" ToRole="Tbpaciente" />
+          <NavigationProperty Name="TbTelefonoDuenoes" Relationship="Self.tbtelefonoDueno_tbdueno_fk" FromRole="tbDUENO" ToRole="TbTelefonoDueno" />
+        </EntityType>
+        <EntityType Name="tbEmpleado">
+          <Key>
+            <PropertyRef Name="cod_empleado" />
+          </Key>
+          <Property Name="cod_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_ing" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cod_puesto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbCitas" Relationship="Self.tbcita_tbempleado_fk" FromRole="tbEmpleado" ToRole="tbCita" />
+          <NavigationProperty Name="tbPuesto" Relationship="Self.tbEmpleado_tbpuesto_fk" FromRole="tbEmpleado" ToRole="tbPuesto" />
+          <NavigationProperty Name="Tbpacientes" Relationship="Self.tbpaciente_tbempleado_fk" FromRole="tbEmpleado" ToRole="Tbpaciente" />
+          <NavigationProperty Name="tbTelEmpleadoes" Relationship="Self.tbTelEmpleado_TBEMPLEADO_fk" FromRole="tbEmpleado" ToRole="tbTelEmpleado" />
+          <NavigationProperty Name="tbusuarios" Relationship="Self.tbuser_tbempleado_fk" FromRole="tbEmpleado" ToRole="tbusuario" />
+          <NavigationProperty Name="tbTurnoes" Relationship="Self.tbturnoxempleado" FromRole="tbEmpleado" ToRole="tbTurno" />
+        </EntityType>
+        <EntityType Name="tbenfermedad">
+          <Key>
+            <PropertyRef Name="cod_enfermedad" />
+          </Key>
+          <Property Name="cod_enfermedad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbrazas" Relationship="Self.tbenferXRaza" FromRole="tbenfermedad" ToRole="tbraza" />
+          <NavigationProperty Name="tbmedicinas" Relationship="Self.tbmedixenfer" FromRole="tbenfermedad" ToRole="tbmedicina" />
+        </EntityType>
+        <EntityType Name="tbespecie">
+          <Key>
+            <PropertyRef Name="cod_especie" />
+          </Key>
+          <Property Name="cod_especie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_familia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbfamilia" Relationship="Self.tbespecie_tbfamilia_fk" FromRole="tbespecie" ToRole="tbfamilia" />
+          <NavigationProperty Name="Tbpacientes" Relationship="Self.tbpaciente_tbespecie_fk" FromRole="tbespecie" ToRole="Tbpaciente" />
+          <NavigationProperty Name="tbrazas" Relationship="Self.tbraza_tbespecie_fk" FromRole="tbespecie" ToRole="tbraza" />
+        </EntityType>
+        <EntityType Name="tbfamilia">
+          <Key>
+            <PropertyRef Name="cod_familia" />
+          </Key>
+          <Property Name="cod_familia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="29" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbespecies" Relationship="Self.tbespecie_tbfamilia_fk" FromRole="tbfamilia" ToRole="tbespecie" />
+        </EntityType>
+        <EntityType Name="tbmedicina">
+          <Key>
+            <PropertyRef Name="cod_medicina" />
+          </Key>
+          <Property Name="cod_medicina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dosis" Type="Int32" Nullable="false" />
+          <Property Name="uomdosis" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="frecuencia" Type="Int32" Nullable="false" />
+          <Property Name="uom_frecuencia" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbenfermedads" Relationship="Self.tbmedixenfer" FromRole="tbmedicina" ToRole="tbenfermedad" />
+          <NavigationProperty Name="tbRecetas" Relationship="Self.tbmedixreceta" FromRole="tbmedicina" ToRole="tbReceta" />
+        </EntityType>
+        <EntityType Name="Tbpaciente">
+          <Key>
+            <PropertyRef Name="cod_paciente" />
+          </Key>
+          <Property Name="cod_paciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nac" Type="DateTime" Precision="0" />
+          <Property Name="cod_especie" Type="Int32" Nullable="false" />
+          <Property Name="cod_dueno" Type="Int32" Nullable="false" />
+          <Property Name="cod_medico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbcirugias" Relationship="Self.tbcirugia_tbpaciente_fk" FromRole="Tbpaciente" ToRole="tbcirugia" />
+          <NavigationProperty Name="tbCitas" Relationship="Self.tbcita_tbpaciente_fk" FromRole="Tbpaciente" ToRole="tbCita" />
+          <NavigationProperty Name="tbDUENO" Relationship="Self.tbpaciente_tbdueno_fk" FromRole="Tbpaciente" ToRole="tbDUENO" />
+          <NavigationProperty Name="tbEmpleado" Relationship="Self.tbpaciente_tbempleado_fk" FromRole="Tbpaciente" ToRole="tbEmpleado" />
+          <NavigationProperty Name="tbespecie" Relationship="Self.tbpaciente_tbespecie_fk" FromRole="Tbpaciente" ToRole="tbespecie" />
+          <NavigationProperty Name="tbRecetas" Relationship="Self.tbreceta_tbpaciente_fk" FromRole="Tbpaciente" ToRole="tbReceta" />
+        </EntityType>
+        <EntityType Name="tbPuesto">
+          <Key>
+            <PropertyRef Name="cod_puesto" />
+          </Key>
+          <Property Name="cod_puesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_puesto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="salario" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="tbEmpleadoes" Relationship="Self.tbEmpleado_tbpuesto_fk" FromRole="tbPuesto" ToRole="tbEmpleado" />
+        </EntityType>
+        <EntityType Name="tbraza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longevidad" Type="Int32" />
+          <Property Name="cod_especie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbespecie" Relationship="Self.tbraza_tbespecie_fk" FromRole="tbraza" ToRole="tbespecie" />
+          <NavigationProperty Name="tbenfermedads" Relationship="Self.tbenferXRaza" FromRole="tbraza" ToRole="tbenfermedad" />
+        </EntityType>
+        <EntityType Name="tbReceta">
+          <Key>
+            <PropertyRef Name="cod_receta" />
+          </Key>
+          <Property Name="cod_receta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_paciente" Type="Int32" Nullable="false" />
+          <Property Name="duracion" Type="Int32" />
+          <NavigationProperty Name="Tbpaciente" Relationship="Self.tbreceta_tbpaciente_fk" FromRole="tbReceta" ToRole="Tbpaciente" />
+          <NavigationProperty Name="tbmedicinas" Relationship="Self.tbmedixreceta" FromRole="tbReceta" ToRole="tbmedicina" />
+        </EntityType>
+        <EntityType Name="TbTelefonoDueno">
+          <Key>
+            <PropertyRef Name="cod_dueno" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="cod_dueno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbDUENO" Relationship="Self.tbtelefonoDueno_tbdueno_fk" FromRole="TbTelefonoDueno" ToRole="tbDUENO" />
+        </EntityType>
+        <EntityType Name="tbTelEmpleado">
+          <Key>
+            <PropertyRef Name="cod_empleado" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="cod_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbEmpleado" Relationship="Self.tbTelEmpleado_TBEMPLEADO_fk" FromRole="tbTelEmpleado" ToRole="tbEmpleado" />
+        </EntityType>
+        <EntityType Name="tbtiporiesgc">
+          <Key>
+            <PropertyRef Name="cod_cirugia" />
+          </Key>
+          <Property Name="cod_cirugia" Type="Int32" Nullable="false" />
+          <Property Name="riesgo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbcirugia" Relationship="Self.tbtiporiesgc_tbcirugia" FromRole="tbtiporiesgc" ToRole="tbcirugia" />
+        </EntityType>
+        <EntityType Name="tbTurno">
+          <Key>
+            <PropertyRef Name="cod_turno" />
+          </Key>
+          <Property Name="cod_turno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hora_inicio" Type="Int32" Nullable="false" />
+          <Property Name="hora_fin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbEmpleadoes" Relationship="Self.tbturnoxempleado" FromRole="tbTurno" ToRole="tbEmpleado" />
+        </EntityType>
+        <EntityType Name="tbusuario">
+          <Key>
+            <PropertyRef Name="cod_user" />
+          </Key>
+          <Property Name="cod_emp" Type="Int32" />
+          <Property Name="cod_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbEmpleado" Relationship="Self.tbuser_tbempleado_fk" FromRole="tbusuario" ToRole="tbEmpleado" />
+        </EntityType>
+        <Association Name="tbcirugia_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbcirugia" Type="Self.tbcirugia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbcirugia">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbtiporiesgc_tbcirugia">
+          <End Role="tbcirugia" Type="Self.tbcirugia" Multiplicity="1" />
+          <End Role="tbtiporiesgc" Type="Self.tbtiporiesgc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbcirugia">
+              <PropertyRef Name="cod_cirugia" />
+            </Principal>
+            <Dependent Role="tbtiporiesgc">
+              <PropertyRef Name="cod_cirugia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbcita_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="tbCita" Type="Self.tbCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbCita">
+              <PropertyRef Name="cod_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbcita_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbCita" Type="Self.tbCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbCita">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbdueno_fk">
+          <End Role="tbDUENO" Type="Self.tbDUENO" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDUENO">
+              <PropertyRef Name="cod_dueno" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_dueno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbtelefonoDueno_tbdueno_fk">
+          <End Role="tbDUENO" Type="Self.tbDUENO" Multiplicity="1" />
+          <End Role="TbTelefonoDueno" Type="Self.TbTelefonoDueno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDUENO">
+              <PropertyRef Name="cod_dueno" />
+            </Principal>
+            <Dependent Role="TbTelefonoDueno">
+              <PropertyRef Name="cod_dueno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbEmpleado_tbpuesto_fk">
+          <End Role="tbPuesto" Type="Self.tbPuesto" Multiplicity="1" />
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPuesto">
+              <PropertyRef Name="cod_puesto" />
+            </Principal>
+            <Dependent Role="tbEmpleado">
+              <PropertyRef Name="cod_puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbTelEmpleado_TBEMPLEADO_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="1" />
+          <End Role="tbTelEmpleado" Type="Self.tbTelEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbTelEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbuser_tbempleado_fk">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="0..1" />
+          <End Role="tbusuario" Type="Self.tbusuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleado">
+              <PropertyRef Name="cod_empleado" />
+            </Principal>
+            <Dependent Role="tbusuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbespecie_tbfamilia_fk">
+          <End Role="tbfamilia" Type="Self.tbfamilia" Multiplicity="1" />
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbfamilia">
+              <PropertyRef Name="cod_familia" />
+            </Principal>
+            <Dependent Role="tbespecie">
+              <PropertyRef Name="cod_familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbpaciente_tbespecie_fk">
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="1" />
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbespecie">
+              <PropertyRef Name="cod_especie" />
+            </Principal>
+            <Dependent Role="Tbpaciente">
+              <PropertyRef Name="cod_especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbraza_tbespecie_fk">
+          <End Role="tbespecie" Type="Self.tbespecie" Multiplicity="1" />
+          <End Role="tbraza" Type="Self.tbraza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbespecie">
+              <PropertyRef Name="cod_especie" />
+            </Principal>
+            <Dependent Role="tbraza">
+              <PropertyRef Name="cod_especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbreceta_tbpaciente_fk">
+          <End Role="Tbpaciente" Type="Self.Tbpaciente" Multiplicity="1" />
+          <End Role="tbReceta" Type="Self.tbReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbpaciente">
+              <PropertyRef Name="cod_paciente" />
+            </Principal>
+            <Dependent Role="tbReceta">
+              <PropertyRef Name="cod_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbenferXRaza">
+          <End Role="tbenfermedad" Type="Self.tbenfermedad" Multiplicity="*" />
+          <End Role="tbraza" Type="Self.tbraza" Multiplicity="*" />
+        </Association>
+        <Association Name="tbmedixenfer">
+          <End Role="tbenfermedad" Type="Self.tbenfermedad" Multiplicity="*" />
+          <End Role="tbmedicina" Type="Self.tbmedicina" Multiplicity="*" />
+        </Association>
+        <Association Name="tbmedixreceta">
+          <End Role="tbmedicina" Type="Self.tbmedicina" Multiplicity="*" />
+          <End Role="tbReceta" Type="Self.tbReceta" Multiplicity="*" />
+        </Association>
+        <Association Name="tbturnoxempleado">
+          <End Role="tbEmpleado" Type="Self.tbEmpleado" Multiplicity="*" />
+          <End Role="tbTurno" Type="Self.tbTurno" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="VeterinariaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbcirugias" EntityType="Self.tbcirugia" />
+          <EntitySet Name="tbCitas" EntityType="Self.tbCita" />
+          <EntitySet Name="tbDUENOes" EntityType="Self.tbDUENO" />
+          <EntitySet Name="tbEmpleadoes" EntityType="Self.tbEmpleado" />
+          <EntitySet Name="tbenfermedads" EntityType="Self.tbenfermedad" />
+          <EntitySet Name="tbespecies" EntityType="Self.tbespecie" />
+          <EntitySet Name="tbfamilias" EntityType="Self.tbfamilia" />
+          <EntitySet Name="tbmedicinas" EntityType="Self.tbmedicina" />
+          <EntitySet Name="Tbpacientes" EntityType="Self.Tbpaciente" />
+          <EntitySet Name="tbPuestoes" EntityType="Self.tbPuesto" />
+          <EntitySet Name="tbrazas" EntityType="Self.tbraza" />
+          <EntitySet Name="tbRecetas" EntityType="Self.tbReceta" />
+          <EntitySet Name="TbTelefonoDuenoes" EntityType="Self.TbTelefonoDueno" />
+          <EntitySet Name="tbTelEmpleadoes" EntityType="Self.tbTelEmpleado" />
+          <EntitySet Name="tbtiporiesgcs" EntityType="Self.tbtiporiesgc" />
+          <EntitySet Name="tbTurnoes" EntityType="Self.tbTurno" />
+          <EntitySet Name="tbusuarios" EntityType="Self.tbusuario" />
+          <AssociationSet Name="tbcirugia_tbpaciente_fk" Association="Self.tbcirugia_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+            <End Role="tbcirugia" EntitySet="tbcirugias" />
+          </AssociationSet>
+          <AssociationSet Name="tbtiporiesgc_tbcirugia" Association="Self.tbtiporiesgc_tbcirugia">
+            <End Role="tbcirugia" EntitySet="tbcirugias" />
+            <End Role="tbtiporiesgc" EntitySet="tbtiporiesgcs" />
+          </AssociationSet>
+          <AssociationSet Name="tbcita_tbempleado_fk" Association="Self.tbcita_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+            <End Role="tbCita" EntitySet="tbCitas" />
+          </AssociationSet>
+          <AssociationSet Name="tbcita_tbpaciente_fk" Association="Self.tbcita_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+            <End Role="tbCita" EntitySet="tbCitas" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbdueno_fk" Association="Self.tbpaciente_tbdueno_fk">
+            <End Role="tbDUENO" EntitySet="tbDUENOes" />
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+          </AssociationSet>
+          <AssociationSet Name="tbtelefonoDueno_tbdueno_fk" Association="Self.tbtelefonoDueno_tbdueno_fk">
+            <End Role="tbDUENO" EntitySet="tbDUENOes" />
+            <End Role="TbTelefonoDueno" EntitySet="TbTelefonoDuenoes" />
+          </AssociationSet>
+          <AssociationSet Name="tbEmpleado_tbpuesto_fk" Association="Self.tbEmpleado_tbpuesto_fk">
+            <End Role="tbPuesto" EntitySet="tbPuestoes" />
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbempleado_fk" Association="Self.tbpaciente_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+          </AssociationSet>
+          <AssociationSet Name="tbTelEmpleado_TBEMPLEADO_fk" Association="Self.tbTelEmpleado_TBEMPLEADO_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+            <End Role="tbTelEmpleado" EntitySet="tbTelEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="tbuser_tbempleado_fk" Association="Self.tbuser_tbempleado_fk">
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+            <End Role="tbusuario" EntitySet="tbusuarios" />
+          </AssociationSet>
+          <AssociationSet Name="tbespecie_tbfamilia_fk" Association="Self.tbespecie_tbfamilia_fk">
+            <End Role="tbfamilia" EntitySet="tbfamilias" />
+            <End Role="tbespecie" EntitySet="tbespecies" />
+          </AssociationSet>
+          <AssociationSet Name="tbpaciente_tbespecie_fk" Association="Self.tbpaciente_tbespecie_fk">
+            <End Role="tbespecie" EntitySet="tbespecies" />
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+          </AssociationSet>
+          <AssociationSet Name="tbraza_tbespecie_fk" Association="Self.tbraza_tbespecie_fk">
+            <End Role="tbespecie" EntitySet="tbespecies" />
+            <End Role="tbraza" EntitySet="tbrazas" />
+          </AssociationSet>
+          <AssociationSet Name="tbreceta_tbpaciente_fk" Association="Self.tbreceta_tbpaciente_fk">
+            <End Role="Tbpaciente" EntitySet="Tbpacientes" />
+            <End Role="tbReceta" EntitySet="tbRecetas" />
+          </AssociationSet>
+          <AssociationSet Name="tbenferXRaza" Association="Self.tbenferXRaza">
+            <End Role="tbenfermedad" EntitySet="tbenfermedads" />
+            <End Role="tbraza" EntitySet="tbrazas" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixenfer" Association="Self.tbmedixenfer">
+            <End Role="tbenfermedad" EntitySet="tbenfermedads" />
+            <End Role="tbmedicina" EntitySet="tbmedicinas" />
+          </AssociationSet>
+          <AssociationSet Name="tbmedixreceta" Association="Self.tbmedixreceta">
+            <End Role="tbmedicina" EntitySet="tbmedicinas" />
+            <End Role="tbReceta" EntitySet="tbRecetas" />
+          </AssociationSet>
+          <AssociationSet Name="tbturnoxempleado" Association="Self.tbturnoxempleado">
+            <End Role="tbEmpleado" EntitySet="tbEmpleadoes" />
+            <End Role="tbTurno" EntitySet="tbTurnoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VeterinariaModelStoreContainer" CdmEntityContainer="VeterinariaEntities">
+          <EntitySetMapping Name="tbcirugias">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbcirugia">
+              <MappingFragment StoreEntitySet="tbcirugia">
+                <ScalarProperty Name="cod_cirugia" ColumnName="cod_cirugia" />
+                <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+                <ScalarProperty Name="duracion_minutos" ColumnName="duracion_minutos" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="anestesia" ColumnName="anestesia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCitas">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbCita">
+              <MappingFragment StoreEntitySet="tbCita">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha_cita" ColumnName="fecha_cita" />
+                <ScalarProperty Name="hora_cita" ColumnName="hora_cita" />
+                <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+                <ScalarProperty Name="descrip_cita" ColumnName="descrip_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="cod_medico" ColumnName="cod_medico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDUENOes">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbDUENO">
+              <MappingFragment StoreEntitySet="tbDUENO">
+                <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbEmpleadoes">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbEmpleado">
+              <MappingFragment StoreEntitySet="tbEmpleado">
+                <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="fecha_ing" ColumnName="fecha_ing" />
+                <ScalarProperty Name="cod_puesto" ColumnName="cod_puesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbenfermedads">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbenfermedad">
+              <MappingFragment StoreEntitySet="tbenfermedad">
+                <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbespecies">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbespecie">
+              <MappingFragment StoreEntitySet="tbespecie">
+                <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cod_familia" ColumnName="cod_familia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbfamilias">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbfamilia">
+              <MappingFragment StoreEntitySet="tbfamilia">
+                <ScalarProperty Name="cod_familia" ColumnName="cod_familia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbmedicinas">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbmedicina">
+              <MappingFragment StoreEntitySet="tbmedicina">
+                <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="dosis" ColumnName="dosis" />
+                <ScalarProperty Name="uomdosis" ColumnName="uomdosis" />
+                <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+                <ScalarProperty Name="uom_frecuencia" ColumnName="uom_frecuencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbpacientes">
+            <EntityTypeMapping TypeName="VeterinariaModel.Tbpaciente">
+              <MappingFragment StoreEntitySet="Tbpaciente">
+                <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+                <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+                <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+                <ScalarProperty Name="cod_medico" ColumnName="cod_medico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPuestoes">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbPuesto">
+              <MappingFragment StoreEntitySet="tbPuesto">
+                <ScalarProperty Name="cod_puesto" ColumnName="cod_puesto" />
+                <ScalarProperty Name="nombre_puesto" ColumnName="nombre_puesto" />
+                <ScalarProperty Name="salario" ColumnName="salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbrazas">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbraza">
+              <MappingFragment StoreEntitySet="tbraza">
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="longevidad" ColumnName="longevidad" />
+                <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRecetas">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbReceta">
+              <MappingFragment StoreEntitySet="tbReceta">
+                <ScalarProperty Name="cod_receta" ColumnName="cod_receta" />
+                <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbTelefonoDuenoes">
+            <EntityTypeMapping TypeName="VeterinariaModel.TbTelefonoDueno">
+              <MappingFragment StoreEntitySet="TbTelefonoDueno">
+                <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTelEmpleadoes">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbTelEmpleado">
+              <MappingFragment StoreEntitySet="tbTelEmpleado">
+                <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbtiporiesgcs">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbtiporiesgc">
+              <MappingFragment StoreEntitySet="tbtiporiesgc">
+                <ScalarProperty Name="cod_cirugia" ColumnName="cod_cirugia" />
+                <ScalarProperty Name="riesgo" ColumnName="riesgo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTurnoes">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbTurno">
+              <MappingFragment StoreEntitySet="tbTurno">
+                <ScalarProperty Name="cod_turno" ColumnName="cod_turno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="hora_inicio" ColumnName="hora_inicio" />
+                <ScalarProperty Name="hora_fin" ColumnName="hora_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbusuarios">
+            <EntityTypeMapping TypeName="VeterinariaModel.tbusuario">
+              <MappingFragment StoreEntitySet="tbusuario">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="cod_user" ColumnName="cod_user" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tbenferXRaza" TypeName="VeterinariaModel.tbenferXRaza" StoreEntitySet="tbenferXRaza">
+            <EndProperty Name="tbenfermedad">
+              <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+            </EndProperty>
+            <EndProperty Name="tbraza">
+              <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tbmedixenfer" TypeName="VeterinariaModel.tbmedixenfer" StoreEntitySet="tbmedixenfer">
+            <EndProperty Name="tbenfermedad">
+              <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+            </EndProperty>
+            <EndProperty Name="tbmedicina">
+              <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tbmedixreceta" TypeName="VeterinariaModel.tbmedixreceta" StoreEntitySet="tbmedixreceta">
+            <EndProperty Name="tbmedicina">
+              <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+            </EndProperty>
+            <EndProperty Name="tbReceta">
+              <ScalarProperty Name="cod_receta" ColumnName="cod_receta" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tbturnoxempleado" TypeName="VeterinariaModel.tbturnoxempleado" StoreEntitySet="tbturnoxempleado">
+            <EndProperty Name="tbEmpleado">
+              <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+            </EndProperty>
+            <EndProperty Name="tbTurno">
+              <ScalarProperty Name="cod_turno" ColumnName="cod_turno" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

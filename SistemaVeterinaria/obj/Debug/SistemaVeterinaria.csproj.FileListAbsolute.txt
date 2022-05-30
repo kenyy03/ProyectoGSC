@@ -1,0 +1,166 @@
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\SistemaVeterinaria.dll.config
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\SistemaVeterinaria.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\SistemaVeterinaria.pdb
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csc.exe
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csc.exe.config
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csc.rsp
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csi.exe
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csi.exe.config
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\csi.rsp
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.AppContext.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Console.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.IO.Compression.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Net.Http.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.ValueTuple.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\vbc.exe
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\vbc.exe.config
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\vbc.rsp
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\VBCSCompiler.exe
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Antlr3.Runtime.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\EntityFramework.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\EntityFramework.SqlServer.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Newtonsoft.Json.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Helpers.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Mvc.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Optimization.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Razor.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.Razor.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\WebGrease.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\EntityFramework.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\EntityFramework.SqlServer.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Helpers.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Mvc.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Optimization.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.Razor.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\System.Web.WebPages.Razor.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Newtonsoft.Json.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Antlr3.Runtime.pdb
+C:\Users\Obed\source\repos\SistemaVeterinaria\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Obed\source\repos\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.AssemblyReference.cache
+C:\Users\Obed\source\repos\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.CoreCompileInputs.cache
+C:\Users\Obed\source\repos\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.CopyComplete
+C:\Users\Obed\source\repos\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.dll
+C:\Users\Obed\source\repos\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.pdb
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\SistemaVeterinaria.dll.config
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\SistemaVeterinaria.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\SistemaVeterinaria.pdb
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csc.exe
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csc.exe.config
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csc.rsp
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csi.exe
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csi.exe.config
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\csi.rsp
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.AppContext.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Collections.Immutable.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Console.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Globalization.Calendars.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.IO.Compression.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.IO.FileSystem.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Net.Http.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Net.Sockets.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Reflection.Metadata.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.ValueTuple.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Xml.XPath.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\vbc.exe
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\vbc.exe.config
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\vbc.rsp
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\VBCSCompiler.exe
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\roslyn\VBCSCompiler.exe.config
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Antlr3.Runtime.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\EntityFramework.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\EntityFramework.SqlServer.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Microsoft.Web.Infrastructure.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Newtonsoft.Json.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Helpers.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Mvc.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Optimization.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Razor.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.Deployment.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.Razor.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\WebGrease.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\EntityFramework.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\EntityFramework.SqlServer.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Helpers.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Mvc.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Optimization.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.Razor.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.Deployment.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\System.Web.WebPages.Razor.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Newtonsoft.Json.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Antlr3.Runtime.pdb
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.AssemblyReference.cache
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.CoreCompileInputs.cache
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.csproj.CopyComplete
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.dll
+C:\Proyecto Ingenieria de Software\SistemaVeterinaria\obj\Debug\SistemaVeterinaria.pdb

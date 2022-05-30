@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SistemaVeterinaria.Models.tbCita>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_cita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_cita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrip_cita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbEmpleado.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbpaciente.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_cita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_cita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrip_cita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEmpleado.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbpaciente.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_cita }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_cita }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_cita })
+        </td>
+    </tr>
+}
+
+</table>

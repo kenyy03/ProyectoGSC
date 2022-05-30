@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VeterinariaModelStoreContainer" CdmEntityContainer="VeterinariaEntities">
+    <EntitySetMapping Name="tbcirugias">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbcirugia">
+        <MappingFragment StoreEntitySet="tbcirugia">
+          <ScalarProperty Name="cod_cirugia" ColumnName="cod_cirugia" />
+          <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+          <ScalarProperty Name="duracion_minutos" ColumnName="duracion_minutos" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="anestesia" ColumnName="anestesia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCitas">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbCita">
+        <MappingFragment StoreEntitySet="tbCita">
+          <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+          <ScalarProperty Name="fecha_cita" ColumnName="fecha_cita" />
+          <ScalarProperty Name="hora_cita" ColumnName="hora_cita" />
+          <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+          <ScalarProperty Name="descrip_cita" ColumnName="descrip_cita" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_medico" ColumnName="cod_medico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbDUENOes">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbDUENO">
+        <MappingFragment StoreEntitySet="tbDUENO">
+          <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbEmpleadoes">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbEmpleado">
+        <MappingFragment StoreEntitySet="tbEmpleado">
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="fecha_ing" ColumnName="fecha_ing" />
+          <ScalarProperty Name="cod_puesto" ColumnName="cod_puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbenfermedads">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbenfermedad">
+        <MappingFragment StoreEntitySet="tbenfermedad">
+          <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbespecies">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbespecie">
+        <MappingFragment StoreEntitySet="tbespecie">
+          <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cod_familia" ColumnName="cod_familia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbfamilias">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbfamilia">
+        <MappingFragment StoreEntitySet="tbfamilia">
+          <ScalarProperty Name="cod_familia" ColumnName="cod_familia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbmedicinas">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbmedicina">
+        <MappingFragment StoreEntitySet="tbmedicina">
+          <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="dosis" ColumnName="dosis" />
+          <ScalarProperty Name="uomdosis" ColumnName="uomdosis" />
+          <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+          <ScalarProperty Name="uom_frecuencia" ColumnName="uom_frecuencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbpacientes">
+      <EntityTypeMapping TypeName="VeterinariaModel.Tbpaciente">
+        <MappingFragment StoreEntitySet="Tbpaciente">
+          <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+          <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+          <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+          <ScalarProperty Name="cod_medico" ColumnName="cod_medico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPuestoes">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbPuesto">
+        <MappingFragment StoreEntitySet="tbPuesto">
+          <ScalarProperty Name="cod_puesto" ColumnName="cod_puesto" />
+          <ScalarProperty Name="nombre_puesto" ColumnName="nombre_puesto" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbrazas">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbraza">
+        <MappingFragment StoreEntitySet="tbraza">
+          <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="longevidad" ColumnName="longevidad" />
+          <ScalarProperty Name="cod_especie" ColumnName="cod_especie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbRecetas">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbReceta">
+        <MappingFragment StoreEntitySet="tbReceta">
+          <ScalarProperty Name="cod_receta" ColumnName="cod_receta" />
+          <ScalarProperty Name="cod_paciente" ColumnName="cod_paciente" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbTelefonoDuenoes">
+      <EntityTypeMapping TypeName="VeterinariaModel.TbTelefonoDueno">
+        <MappingFragment StoreEntitySet="TbTelefonoDueno">
+          <ScalarProperty Name="cod_dueno" ColumnName="cod_dueno" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTelEmpleadoes">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbTelEmpleado">
+        <MappingFragment StoreEntitySet="tbTelEmpleado">
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbtiporiesgcs">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbtiporiesgc">
+        <MappingFragment StoreEntitySet="tbtiporiesgc">
+          <ScalarProperty Name="cod_cirugia" ColumnName="cod_cirugia" />
+          <ScalarProperty Name="riesgo" ColumnName="riesgo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTurnoes">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbTurno">
+        <MappingFragment StoreEntitySet="tbTurno">
+          <ScalarProperty Name="cod_turno" ColumnName="cod_turno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="hora_inicio" ColumnName="hora_inicio" />
+          <ScalarProperty Name="hora_fin" ColumnName="hora_fin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbusuarios">
+      <EntityTypeMapping TypeName="VeterinariaModel.tbusuario">
+        <MappingFragment StoreEntitySet="tbusuario">
+          <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+          <ScalarProperty Name="cod_user" ColumnName="cod_user" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tbenferXRaza" TypeName="VeterinariaModel.tbenferXRaza" StoreEntitySet="tbenferXRaza">
+      <EndProperty Name="tbenfermedad">
+        <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+      </EndProperty>
+      <EndProperty Name="tbraza">
+        <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tbmedixenfer" TypeName="VeterinariaModel.tbmedixenfer" StoreEntitySet="tbmedixenfer">
+      <EndProperty Name="tbenfermedad">
+        <ScalarProperty Name="cod_enfermedad" ColumnName="cod_enfermedad" />
+      </EndProperty>
+      <EndProperty Name="tbmedicina">
+        <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tbmedixreceta" TypeName="VeterinariaModel.tbmedixreceta" StoreEntitySet="tbmedixreceta">
+      <EndProperty Name="tbmedicina">
+        <ScalarProperty Name="cod_medicina" ColumnName="cod_medicina" />
+      </EndProperty>
+      <EndProperty Name="tbReceta">
+        <ScalarProperty Name="cod_receta" ColumnName="cod_receta" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tbturnoxempleado" TypeName="VeterinariaModel.tbturnoxempleado" StoreEntitySet="tbturnoxempleado">
+      <EndProperty Name="tbEmpleado">
+        <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+      </EndProperty>
+      <EndProperty Name="tbTurno">
+        <ScalarProperty Name="cod_turno" ColumnName="cod_turno" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
