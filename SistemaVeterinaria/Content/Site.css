@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background-color: #FFFFFF;
-    // background-image: url("~/Content/imagenes/fondo.JPG")
-}
+﻿
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -11,7 +6,9 @@
     padding-right: 15px;
 }
 
-
+.navbar-link{
+    color: #fff;
+}
 
 #sidebar {
     background-color: #35BAEC;
@@ -34,10 +31,12 @@ textarea {
     max-width: 280px;
 }
 
-.navbar2 {
+.navbar-primary {
     background-color: #3782E4;
     color: white;
 }
 
-.navbar3 > li {
-    color: white;
+.navbar-hover:hover {
+    color: #23527c;
+    background: #eee;
+}

@@ -5,27 +5,32 @@
 <div class="jumbotron">
     <h1>Clinica VeterinariaT</h1>
     <p class="lead">Sitio Web en proceso, construido por estudiantes de CEUTEC</p>
-    <p><a href="https://localhost:44313/Home/Index" class="btn btn-primary btn-lg">Home &raquo;</a></p>
+    <p>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary btn-lg" })</p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Registrar Empleados</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Formulario de Registro de Empleados, donde podra ver los detalles de cada empleado,
+            editar o borrar, según sea su elección a realizar.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Ir a Empleados &raquo;</a></p>
+        <p>@Html.ActionLink("Ir a Empleados", "Index", "Empleado", null, new { @class = "btn btn-default" })</p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Ir a Pacientes &raquo;</a></p>
+        <h2>Registrar Pacientes</h2>
+        <p>
+            Formulario de Registro de Pacientes, donde podra ver los detalles de cada empleado,
+            editar o borrar, según sea su elección a realizar.
+        </p>
+        <p>@Html.ActionLink("Ir a Pacientes", "Index", "Paciente", null, new { @class = "btn btn-default" })</p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Ir a citas &raquo;</a></p>
+        <h2>Reservar una cita</h2>
+        <p>
+            Formulario donde el usuario podrá reservar una cita para su mascota, también tendra opciones
+            de ver los detalles, editar o borrar la cita, según sea su elección a realizar. 
+        </p>
+        <p>@Html.ActionLink("Ir a Citas", "Index", "Cita", null, new { @class = "btn btn-default" })</p>
     </div>
 </div>
