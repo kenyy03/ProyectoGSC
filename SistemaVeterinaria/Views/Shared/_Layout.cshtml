@@ -3,38 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Clinica Veterinaria Ceutek</title>
+    <title>@ViewBag.Title - Clinica Veterinaria Ceutec</title>
 
 
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap.min.css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top navbar2">
+    <div class="navbar navbar-fixed-top navbar-primary">
         <div class="container">
-            <div class="navbar-header ">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Veterinaria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", id = "OT", style = "color: white" })
+                @Html.ActionLink("Veterinaria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-hover navbar-link", id = "OT" })
             </div>
-            <div class="navbar-collapse collapse navbar2">
+            <div class="navbar-collapse collapse navbar-primary">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Duenos", "Index", "Dueno", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Empleados", "Index", "Empleado", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Especie", "Index", "Especie", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Cita", "Index", "Cita", null, new { id = "OT", style = "color: white" })</li>
 
-                    <li>@Html.ActionLink("Familia", "Index", "Familia", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Pacientes", "Index", "Paciente", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Puestos", "Index", "Puesto", null, new { id = "OT", style = "color: white" })</li>
+                    <li>@Html.ActionLink("Duenos", "Index", "Dueno", null, new { id = "OT", @class  = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Empleados", "Index", "Empleado", null, new { id = "OT", @class = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Especie", "Index", "Especie", null, new { id = "OT", @class = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Cita", "Index", "Cita", null, new { id = "OT", @class = "navbar-link" })</li>
 
-                    <li>@Html.ActionLink("Registro de Usuario", "Create", "Usuario", null, new { id = "OT", style = "color: white" })</li>
-                    <li>@Html.ActionLink("Registro de Turno", "Index", "Turno", null, new { id = "OT", style = "color: white" })</li>
+                    <li>@Html.ActionLink("Familia", "Index", "Familia", null, new { id = "OT", @class = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Pacientes", "Index", "Paciente", null, new { id = "OT", @class = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Puestos", "Index", "Puesto", null, new { id = "OT", @class = "navbar-link" })</li>
 
+                    <li>@Html.ActionLink("Registro de Usuario", "Create", "Usuario", null, new { id = "OT", @class = "navbar-link" })</li>
+                    <li>@Html.ActionLink("Registro de Turno", "Index", "Turno", null, new { id = "OT", @class = "navbar-link" })</li>
 
                 </ul>
             </div>
@@ -44,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Clinica Veterinaria Ceutek</p>
+            <p>&copy; @DateTime.Now.Year - Clinica Veterinaria Ceutec</p>
         </footer>
     </div>
 
