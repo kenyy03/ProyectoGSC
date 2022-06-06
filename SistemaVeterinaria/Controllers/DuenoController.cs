@@ -110,9 +110,13 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbDUENO tbDUENO = veterinariaContext.TDueno.Find(id);
-            veterinariaContext.TDueno.Remove(tbDUENO);
+            var duenoEncontrado = veterinariaContext.TDueno.Find(id);
+            bool esUnDuenoValido = duenoEncontrado != null;
+            if(!esUnDuenoValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            veterinariaContext.TDueno.Remove(duenoEncontrado);
             veterinariaContext.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
