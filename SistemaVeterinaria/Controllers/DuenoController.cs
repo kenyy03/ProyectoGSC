@@ -12,27 +12,30 @@ namespace SistemaVeterinaria.Controllers
 {
     public class DuenoController : Controller
     {
-        private VeterinariaEntities db = new VeterinariaEntities();
+        private VeterinariaEntities veterinariaContext;
+
+        public DuenoController()
+        {
+            veterinariaContext = new VeterinariaEntities();
+        }
 
         // GET: Dueno
         public ActionResult Index()
         {
-            return View(db.tbDUENOes.ToList());
+            return View(veterinariaContext.TDueno.ToList());
         }
 
         // GET: Dueno/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbDUENO tbDUENO = db.tbDUENOes.Find(id);
-            if (tbDUENO == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbDUENO);
+            bool esUnIdValido = id != null;
+            if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var duenoEncontrado = veterinariaContext.TDueno.Find(id);
+            bool esUnDuenoValido = duenoEncontrado != null;
+            if(!esUnDuenoValido) return HttpNotFound();
+
+            return View(duenoEncontrado);
         }
 
         // GET: Dueno/Create
@@ -46,16 +49,14 @@ namespace SistemaVeterinaria.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO tbDUENO)
+        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO Dueno)
         {
-            if (ModelState.IsValid)
-            {
-                db.tbDUENOes.Add(tbDUENO);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(tbDUENO);
+            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            veterinariaContext.TDueno.Add(Dueno);
+            veterinariaContext.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Dueno/Edit/5
@@ -65,7 +66,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbDUENO tbDUENO = db.tbDUENOes.Find(id);
+            tbDUENO tbDUENO = veterinariaContext.TDueno.Find(id);
             if (tbDUENO == null)
             {
                 return HttpNotFound();
@@ -82,8 +83,8 @@ namespace SistemaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbDUENO).State = EntityState.Modified;
-                db.SaveChanges();
+                veterinariaContext.Entry(tbDUENO).State = EntityState.Modified;
+                veterinariaContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(tbDUENO);
@@ -96,7 +97,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbDUENO tbDUENO = db.tbDUENOes.Find(id);
+            tbDUENO tbDUENO = veterinariaContext.TDueno.Find(id);
             if (tbDUENO == null)
             {
                 return HttpNotFound();
@@ -109,9 +110,13 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbDUENO tbDUENO = db.tbDUENOes.Find(id);
-            db.tbDUENOes.Remove(tbDUENO);
-            db.SaveChanges();
+            var duenoEncontrado = veterinariaContext.TDueno.Find(id);
+            bool esUnDuenoValido = duenoEncontrado != null;
+            if(!esUnDuenoValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            veterinariaContext.TDueno.Remove(duenoEncontrado);
+            veterinariaContext.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -119,7 +124,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                veterinariaContext.Dispose();
             }
             base.Dispose(disposing);
         }
