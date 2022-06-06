@@ -49,16 +49,14 @@ namespace SistemaVeterinaria.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO tbDUENO)
+        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO Dueno)
         {
-            if (ModelState.IsValid)
-            {
-                veterinariaContext.TDueno.Add(tbDUENO);
-                veterinariaContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(tbDUENO);
+            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            veterinariaContext.TDueno.Add(Dueno);
+            veterinariaContext.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Dueno/Edit/5
