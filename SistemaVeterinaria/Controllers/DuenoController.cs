@@ -12,20 +12,18 @@ namespace SistemaVeterinaria.Controllers
 {
     public class DuenoController : Controller
     {
-        private VeterinariaEntities veterinariaContext;
+        public readonly VeterinariaEntities veterinariaContext;
 
         public DuenoController()
         {
             veterinariaContext = new VeterinariaEntities();
         }
 
-        // GET: Dueno
         public ActionResult Index()
         {
             return View(veterinariaContext.TDueno.ToList());
         }
 
-        // GET: Dueno/Details/5
         public ActionResult Details(int? id)
         {
             bool esUnIdValido = id != null;
@@ -38,18 +36,15 @@ namespace SistemaVeterinaria.Controllers
             return View(duenoEncontrado);
         }
 
-        // GET: Dueno/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Dueno/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO Dueno)
+        public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] 
+        tbDUENO Dueno)
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
@@ -59,53 +54,29 @@ namespace SistemaVeterinaria.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Dueno/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbDUENO tbDUENO = veterinariaContext.TDueno.Find(id);
-            if (tbDUENO == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbDUENO);
+            return Details(id);
         }
 
-        // POST: Dueno/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] tbDUENO tbDUENO)
+        public ActionResult Edit([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] 
+        tbDUENO Dueno)
         {
-            if (ModelState.IsValid)
-            {
-                veterinariaContext.Entry(tbDUENO).State = EntityState.Modified;
-                veterinariaContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tbDUENO);
+            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            veterinariaContext.Entry(Dueno).State = EntityState.Modified;
+            veterinariaContext.SaveChanges();
+            return RedirectToAction("Index");
+            
         }
 
-        // GET: Dueno/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbDUENO tbDUENO = veterinariaContext.TDueno.Find(id);
-            if (tbDUENO == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbDUENO);
+            return Details(id);
         }
 
-        // POST: Dueno/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
