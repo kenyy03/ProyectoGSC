@@ -17,7 +17,7 @@ namespace SistemaVeterinaria.Controllers
         // GET: Puesto
         public ActionResult Index()
         {
-            return View(db.tbPuestoes.ToList());
+            return View(db.TPuestos.ToList());
         }
 
         // GET: Puesto/Details/5
@@ -27,7 +27,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbPuesto tbPuesto = db.tbPuestoes.Find(id);
+            tbPuesto tbPuesto = db.TPuestos.Find(id);
             if (tbPuesto == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tbPuestoes.Add(tbPuesto);
+                db.TPuestos.Add(tbPuesto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbPuesto tbPuesto = db.tbPuestoes.Find(id);
+            tbPuesto tbPuesto = db.TPuestos.Find(id);
             if (tbPuesto == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbPuesto tbPuesto = db.tbPuestoes.Find(id);
+            tbPuesto tbPuesto = db.TPuestos.Find(id);
             if (tbPuesto == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbPuesto tbPuesto = db.tbPuestoes.Find(id);
-            db.tbPuestoes.Remove(tbPuesto);
+            tbPuesto tbPuesto = db.TPuestos.Find(id);
+            db.TPuestos.Remove(tbPuesto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

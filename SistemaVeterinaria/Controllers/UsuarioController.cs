@@ -39,7 +39,7 @@ namespace SistemaVeterinaria.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
-            ViewBag.cod_emp = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE");
+            ViewBag.cod_emp = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace SistemaVeterinaria.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_emp = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
+            ViewBag.cod_emp = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
             return View(tbusuario);
         }
 
@@ -73,7 +73,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_emp = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
+            ViewBag.cod_emp = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
             return View(tbusuario);
         }
 
@@ -90,7 +90,7 @@ namespace SistemaVeterinaria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_emp = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
+            ViewBag.cod_emp = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbusuario.cod_emp);
             return View(tbusuario);
         }
 

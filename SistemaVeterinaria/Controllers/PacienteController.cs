@@ -39,8 +39,8 @@ namespace SistemaVeterinaria.Controllers
         // GET: Paciente/Create
         public ActionResult Create()
         {
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre");
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE");
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre");
+            ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE");
             ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre");
             return View();
         }
@@ -59,8 +59,8 @@ namespace SistemaVeterinaria.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbpaciente.cod_dueno);
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
+            ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
             ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }
@@ -77,8 +77,8 @@ namespace SistemaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbpaciente.cod_dueno);
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
+            ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
             ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }
@@ -96,8 +96,8 @@ namespace SistemaVeterinaria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbpaciente.cod_dueno);
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
+            ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
             ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }

@@ -39,7 +39,7 @@ namespace SistemaVeterinaria.Controllers
         // GET: TelefonoEmpleado/Create
         public ActionResult Create()
         {
-            ViewBag.cod_empleado = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE");
+            ViewBag.cod_empleado = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace SistemaVeterinaria.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_empleado = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
+            ViewBag.cod_empleado = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
             return View(tbTelEmpleado);
         }
 
@@ -73,7 +73,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_empleado = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
+            ViewBag.cod_empleado = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
             return View(tbTelEmpleado);
         }
 
@@ -90,7 +90,7 @@ namespace SistemaVeterinaria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_empleado = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
+            ViewBag.cod_empleado = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbTelEmpleado.cod_empleado);
             return View(tbTelEmpleado);
         }
 
