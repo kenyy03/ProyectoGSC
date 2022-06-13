@@ -12,12 +12,17 @@ namespace SistemaVeterinaria.Controllers
 {
     public class CitaController : Controller
     {
-        private VeterinariaEntities db = new VeterinariaEntities(); //Se genera la conexion
+        private VeterinariaEntities veterinariaContext;
+        
+        public CitaController()
+        {
+            veterinariaContext = new VeterinariaEntities();
+        }
 
         // GET: Cita
         public ActionResult Index()
         {
-            var tbCitas = db.tbCitas.Include(t => t.tbEmpleado).Include(t => t.Tbpaciente);
+            var tbCitas = veterinariaContext.tbCitas.Include(t => t.tbEmpleado).Include(t => t.Tbpaciente);
             return View(tbCitas.ToList());
         }
 
@@ -28,7 +33,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCita tbCita = db.tbCitas.Find(id);
+            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
             if (tbCita == null)
             {
                 return HttpNotFound();
@@ -39,8 +44,8 @@ namespace SistemaVeterinaria.Controllers
         // GET: Cita/Create
         public ActionResult Create()
         {
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE");
-            ViewBag.cod_paciente = new SelectList(db.Tbpacientes, "cod_paciente", "nombre");
+            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE");
+            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre");
             return View();
         }
 
@@ -53,13 +58,13 @@ namespace SistemaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tbCitas.Add(tbCita);
-                db.SaveChanges();
+                veterinariaContext.tbCitas.Add(tbCita);
+                veterinariaContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(db.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
+            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
+            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
             return View(tbCita);
         }
 
@@ -70,13 +75,13 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCita tbCita = db.tbCitas.Find(id);
+            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
             if (tbCita == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(db.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
+            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
+            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
             return View(tbCita);
         }
 
@@ -89,12 +94,12 @@ namespace SistemaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbCita).State = EntityState.Modified;
-                db.SaveChanges();
+                veterinariaContext.Entry(tbCita).State = EntityState.Modified;
+                veterinariaContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_medico = new SelectList(db.tbEmpleadoes, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(db.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
+            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
+            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
             return View(tbCita);
         }
 
@@ -105,7 +110,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCita tbCita = db.tbCitas.Find(id);
+            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
             if (tbCita == null)
             {
                 return HttpNotFound();
@@ -118,9 +123,9 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbCita tbCita = db.tbCitas.Find(id);
-            db.tbCitas.Remove(tbCita);
-            db.SaveChanges();
+            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
+            veterinariaContext.tbCitas.Remove(tbCita);
+            veterinariaContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -128,7 +133,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                veterinariaContext.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -39,7 +39,7 @@ namespace SistemaVeterinaria.Controllers
         // GET: TelefonoDueno/Create
         public ActionResult Create()
         {
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre");
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace SistemaVeterinaria.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
             return View(tbTelefonoDueno);
         }
 
@@ -73,7 +73,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
             return View(tbTelefonoDueno);
         }
 
@@ -90,7 +90,7 @@ namespace SistemaVeterinaria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_dueno = new SelectList(db.tbDUENOes, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
+            ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbTelefonoDueno.cod_dueno);
             return View(tbTelefonoDueno);
         }
 

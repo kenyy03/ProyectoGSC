@@ -12,111 +12,101 @@ namespace SistemaVeterinaria.Controllers
 {
     public class EmpleadoController : Controller
     {
-        private VeterinariaEntities db = new VeterinariaEntities();
+        public readonly VeterinariaEntities veterinariaContext;
 
-        // GET: Empleado
+        public EmpleadoController()
+        {
+            veterinariaContext = new VeterinariaEntities(); 
+        }
+
         public ActionResult Index()
         {
-            var tbEmpleadoes = db.tbEmpleadoes.Include(t => t.tbPuesto);
-            return View(tbEmpleadoes.ToList());
+            var empleados = veterinariaContext.TEmpleado.Include(empleado => empleado.tbPuesto);
+            return View(empleados.ToList());
         }
 
-        // GET: Empleado/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbEmpleado tbEmpleado = db.tbEmpleadoes.Find(id);
-            if (tbEmpleado == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbEmpleado);
+            bool esUnIdValido = id != null;
+            if ( !esUnIdValido ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
+            
+            bool esUnEmpleadoValido = empleadoEncontrado != null;
+            if ( !esUnEmpleadoValido ) return HttpNotFound();
+            
+            return View(empleadoEncontrado);
         }
 
-        // GET: Empleado/Create
         public ActionResult Create()
         {
-            ViewBag.cod_puesto = new SelectList(db.tbPuestoes, "cod_puesto", "nombre_puesto");
+            ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto");
             return View();
         }
 
-        // POST: Empleado/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_empleado,NOMBRE,APELLIDO,DIRECCION,DNI,fecha_ing,cod_puesto")] tbEmpleado tbEmpleado)
+        public ActionResult Create([Bind(Include = "cod_empleado,NOMBRE,APELLIDO,DIRECCION,DNI,fecha_ing,cod_puesto")] 
+        tbEmpleado empleado)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.tbEmpleadoes.Add(tbEmpleado);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleado.cod_puesto);
+                return View(empleado);
             }
 
-            ViewBag.cod_puesto = new SelectList(db.tbPuestoes, "cod_puesto", "nombre_puesto", tbEmpleado.cod_puesto);
-            return View(tbEmpleado);
-        }
+            veterinariaContext.TEmpleado.Add(empleado);
+            veterinariaContext.SaveChanges();
+            return RedirectToAction("Index");
 
-        // GET: Empleado/Edit/5
+        }
+        
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbEmpleado tbEmpleado = db.tbEmpleadoes.Find(id);
-            if (tbEmpleado == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.cod_puesto = new SelectList(db.tbPuestoes, "cod_puesto", "nombre_puesto", tbEmpleado.cod_puesto);
-            return View(tbEmpleado);
+            bool esUnIdValido = id != null;
+            if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
+            bool esUnEmpleadoValido = empleadoEncontrado != null;
+            
+            if ( !esUnEmpleadoValido ) return HttpNotFound();
+            
+            ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleadoEncontrado.cod_puesto);
+            return View(empleadoEncontrado);
         }
 
-        // POST: Empleado/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_empleado,NOMBRE,APELLIDO,DIRECCION,DNI,fecha_ing,cod_puesto")] tbEmpleado tbEmpleado)
+        public ActionResult Edit([Bind(Include = "cod_empleado,NOMBRE,APELLIDO,DIRECCION,DNI,fecha_ing,cod_puesto")] 
+        tbEmpleado empleado)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Entry(tbEmpleado).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleado.cod_puesto);
+                return View(empleado);
             }
-            ViewBag.cod_puesto = new SelectList(db.tbPuestoes, "cod_puesto", "nombre_puesto", tbEmpleado.cod_puesto);
-            return View(tbEmpleado);
+
+            veterinariaContext.Entry(empleado).State = EntityState.Modified;
+            veterinariaContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        // GET: Empleado/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbEmpleado tbEmpleado = db.tbEmpleadoes.Find(id);
-            if (tbEmpleado == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbEmpleado);
+            return Details(id);
         }
 
-        // POST: Empleado/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbEmpleado tbEmpleado = db.tbEmpleadoes.Find(id);
-            db.tbEmpleadoes.Remove(tbEmpleado);
-            db.SaveChanges();
+            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
+            bool esUnEmpleadoValido = empleadoEncontrado != null;
+
+            if (!esUnEmpleadoValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            veterinariaContext.TEmpleado.Remove(empleadoEncontrado);
+            veterinariaContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -124,7 +114,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                veterinariaContext.Dispose();
             }
             base.Dispose(disposing);
         }
