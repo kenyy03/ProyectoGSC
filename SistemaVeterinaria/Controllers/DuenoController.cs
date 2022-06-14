@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
+using SistemaVeterinaria.Services;
 using SistemaVeterinaria.Models;
 
 namespace SistemaVeterinaria.Controllers
 {
     public class DuenoController : Controller
     {
-        public readonly VeterinariaEntities veterinariaContext;
+        public IDuenoServicios duenoServicios { get; set; }
 
-        public DuenoController()
+        public DuenoController(IDuenoServicios _duenoServicios)
         {
-            veterinariaContext = new VeterinariaEntities();
+            duenoServicios = _duenoServicios;
         }
 
         public ActionResult Index()
         {
-            return View(veterinariaContext.TDueno.ToList());
+            return View(duenoServicios.ObtenerDuenos());
         }
 
         public ActionResult Details(int? id)
@@ -29,7 +24,7 @@ namespace SistemaVeterinaria.Controllers
             bool esUnIdValido = id != null;
             if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var duenoEncontrado = veterinariaContext.TDueno.Find(id);
+            var duenoEncontrado = duenoServicios.ObtenerDuenoPorID(id);
             bool esUnDuenoValido = duenoEncontrado != null;
             if(!esUnDuenoValido) return HttpNotFound();
 
@@ -48,8 +43,8 @@ namespace SistemaVeterinaria.Controllers
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
-            veterinariaContext.TDueno.Add(Dueno);
-            veterinariaContext.SaveChanges();
+            var pudoCrearElNuevoDueno = duenoServicios.CrearDueno(Dueno);
+            if( !pudoCrearElNuevoDueno ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
             return RedirectToAction("Index");
         }
@@ -65,9 +60,10 @@ namespace SistemaVeterinaria.Controllers
         tbDUENO Dueno)
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var pudoEditarAlDueno = duenoServicios.EditarDueno(Dueno);
+            if( !pudoEditarAlDueno ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
-            veterinariaContext.Entry(Dueno).State = EntityState.Modified;
-            veterinariaContext.SaveChanges();
             return RedirectToAction("Index");
             
         }
@@ -81,12 +77,9 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var duenoEncontrado = veterinariaContext.TDueno.Find(id);
-            bool esUnDuenoValido = duenoEncontrado != null;
-            if(!esUnDuenoValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            veterinariaContext.TDueno.Remove(duenoEncontrado);
-            veterinariaContext.SaveChanges();
+            var pudoEliminarElDueno = duenoServicios.EliminarDueno(id);
+            
+            if( !pudoEliminarElDueno ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             return RedirectToAction("Index");
         }
@@ -95,7 +88,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                veterinariaContext.Dispose();
+                duenoServicios.DisposeDueno();
             }
             base.Dispose(disposing);
         }
