@@ -7,31 +7,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaVeterinaria.Models;
+using SistemaVeterinaria.Services;
 
 namespace SistemaVeterinaria.Controllers
 {
     public class EmpleadoController : Controller
     {
-        public readonly VeterinariaEntities veterinariaContext;
+        public IEmpleadoServicios empleadoServicios { get; set; }
 
-        public EmpleadoController()
+        public EmpleadoController(IEmpleadoServicios _empleadoServicios)
         {
-            veterinariaContext = new VeterinariaEntities(); 
+            empleadoServicios = _empleadoServicios; 
         }
 
         public ActionResult Index()
         {
-            var empleados = veterinariaContext.TEmpleado.Include(empleado => empleado.tbPuesto);
-            return View(empleados.ToList());
+            var empleados = empleadoServicios.ObtenerEmpleados();
+            return View(empleados);
         }
 
         public ActionResult Details(int? id)
         {
             bool esUnIdValido = id != null;
             if ( !esUnIdValido ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            
-            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
-            
+
+            var empleadoEncontrado = empleadoServicios.ObtenerEmpleadoPorID(id);
             bool esUnEmpleadoValido = empleadoEncontrado != null;
             if ( !esUnEmpleadoValido ) return HttpNotFound();
             
@@ -40,7 +40,7 @@ namespace SistemaVeterinaria.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto");
+            ViewBag.cod_puesto = empleadoServicios.ObtenerPuestosDeEmpleados();
             return View();
         }
 
@@ -51,12 +51,13 @@ namespace SistemaVeterinaria.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleado.cod_puesto);
+                ViewBag.cod_puesto = empleadoServicios.ObtenerPuestosDeEmpleados(empleado);
                 return View(empleado);
             }
 
-            veterinariaContext.TEmpleado.Add(empleado);
-            veterinariaContext.SaveChanges();
+            var pudoCrearElNuevoEmpleado = empleadoServicios.CrearEmpleado(empleado);
+            if(!pudoCrearElNuevoEmpleado) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
             return RedirectToAction("Index");
 
         }
@@ -66,12 +67,12 @@ namespace SistemaVeterinaria.Controllers
             bool esUnIdValido = id != null;
             if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
-            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
+            var empleadoEncontrado = empleadoServicios.ObtenerEmpleadoPorID(id);
             bool esUnEmpleadoValido = empleadoEncontrado != null;
             
             if ( !esUnEmpleadoValido ) return HttpNotFound();
             
-            ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleadoEncontrado.cod_puesto);
+            ViewBag.cod_puesto = empleadoServicios.ObtenerPuestosDeEmpleados(empleadoEncontrado);
             return View(empleadoEncontrado);
         }
 
@@ -82,12 +83,13 @@ namespace SistemaVeterinaria.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.cod_puesto = new SelectList(veterinariaContext.TPuestos, "cod_puesto", "nombre_puesto", empleado.cod_puesto);
+                ViewBag.cod_puesto = empleadoServicios.ObtenerPuestosDeEmpleados(empleado);
                 return View(empleado);
             }
 
-            veterinariaContext.Entry(empleado).State = EntityState.Modified;
-            veterinariaContext.SaveChanges();
+            var pudoEditarElEmpleado = empleadoServicios.EditarEmpleado(empleado);
+            if ( !pudoEditarElEmpleado ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             return RedirectToAction("Index");
         }
 
@@ -100,13 +102,14 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var empleadoEncontrado = veterinariaContext.TEmpleado.Find(id);
+            var empleadoEncontrado = empleadoServicios.ObtenerEmpleadoPorID(id);
             bool esUnEmpleadoValido = empleadoEncontrado != null;
 
-            if (!esUnEmpleadoValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (!esUnEmpleadoValido) return HttpNotFound();
 
-            veterinariaContext.TEmpleado.Remove(empleadoEncontrado);
-            veterinariaContext.SaveChanges();
+            var pudoEliminarElEmpleado = empleadoServicios.EliminarEmpleado(id);
+            if ( !pudoEliminarElEmpleado ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
             return RedirectToAction("Index");
         }
 
@@ -114,7 +117,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                veterinariaContext.Dispose();
+                empleadoServicios.DisposeEmpleado();
             }
             base.Dispose(disposing);
         }

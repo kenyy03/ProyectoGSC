@@ -51,6 +51,7 @@ namespace SistemaVeterinaria
             UnityContainer container = new UnityContainer();
 
             container.RegisterType<IDuenoServicios, DuenoServicios>();
+            container.RegisterType<IEmpleadoServicios, EmpleadoServicios>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
