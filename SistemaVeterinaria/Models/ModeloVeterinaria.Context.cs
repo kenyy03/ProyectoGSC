@@ -30,8 +30,8 @@ namespace SistemaVeterinaria.Models
         public virtual DbSet<tbDUENO> TDueno { get; set; }
         public virtual DbSet<tbEmpleado> TEmpleado { get; set; }
         public virtual DbSet<tbenfermedad> tbenfermedads { get; set; }
-        public virtual DbSet<tbespecie> tbespecies { get; set; }
-        public virtual DbSet<tbfamilia> tbfamilias { get; set; }
+        public virtual DbSet<tbespecie> TEspecie { get; set; }
+        public virtual DbSet<tbfamilia> TFamilia { get; set; }
         public virtual DbSet<tbmedicina> tbmedicinas { get; set; }
         public virtual DbSet<Tbpaciente> Tbpacientes { get; set; }
         public virtual DbSet<tbPuesto> TPuestos { get; set; }

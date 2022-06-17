@@ -17,7 +17,7 @@ namespace SistemaVeterinaria.Controllers
         // GET: Familia
         public ActionResult Index()
         {
-            return View(db.tbfamilias.ToList());
+            return View(db.TFamilia.ToList());
         }
 
         // GET: Familia/Details/5
@@ -27,7 +27,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbfamilia tbfamilia = db.tbfamilias.Find(id);
+            tbfamilia tbfamilia = db.TFamilia.Find(id);
             if (tbfamilia == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tbfamilias.Add(tbfamilia);
+                db.TFamilia.Add(tbfamilia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbfamilia tbfamilia = db.tbfamilias.Find(id);
+            tbfamilia tbfamilia = db.TFamilia.Find(id);
             if (tbfamilia == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace SistemaVeterinaria.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbfamilia tbfamilia = db.tbfamilias.Find(id);
+            tbfamilia tbfamilia = db.TFamilia.Find(id);
             if (tbfamilia == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbfamilia tbfamilia = db.tbfamilias.Find(id);
-            db.tbfamilias.Remove(tbfamilia);
+            tbfamilia tbfamilia = db.TFamilia.Find(id);
+            db.TFamilia.Remove(tbfamilia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
