@@ -1,122 +1,102 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
 using SistemaVeterinaria.Models;
+using SistemaVeterinaria.Services;
 
 namespace SistemaVeterinaria.Controllers
 {
     public class EspecieController : Controller
     {
-        private VeterinariaEntities db = new VeterinariaEntities();
+        public IEspecieServicios especieServicios { get; set; }
 
-        // GET: Especie
+        public EspecieController(IEspecieServicios _especieServicios)
+        {
+            especieServicios = _especieServicios;
+        }
+
         public ActionResult Index()
         {
-            var tbespecies = db.tbespecies.Include(t => t.tbfamilia);
-            return View(tbespecies.ToList());
+            var especies = especieServicios.ObtenerEspecies();
+            return View(especies);
         }
 
-        // GET: Especie/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbespecie tbespecie = db.tbespecies.Find(id);
-            if (tbespecie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbespecie);
+            var esUnIdValido = id != null;
+            if ( !esUnIdValido ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var especieEncontrada = especieServicios.ObtenerEspeciePorID(id);
+            bool esUnaEspecieValida = especieEncontrada != null;
+            if ( !esUnaEspecieValida ) return HttpNotFound();
+            
+            return View(especieEncontrada);
         }
 
-        // GET: Especie/Create
         public ActionResult Create()
         {
-            ViewBag.cod_familia = new SelectList(db.tbfamilias, "cod_familia", "nombre");
+            ViewBag.cod_familia = especieServicios.ObtenerFamiliaDeEspecie();
             return View();
         }
 
-        // POST: Especie/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_especie,nombre,descripcion,cod_familia")] tbespecie tbespecie)
+        public ActionResult Create([Bind(Include = "cod_especie,nombre,descripcion,cod_familia")] 
+        tbespecie especie)
         {
-            if (ModelState.IsValid)
+            if ( !ModelState.IsValid )
             {
-                db.tbespecies.Add(tbespecie);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_familia = especieServicios.ObtenerFamiliaDeEspecie(especie);
+                return View(especie);
             }
 
-            ViewBag.cod_familia = new SelectList(db.tbfamilias, "cod_familia", "nombre", tbespecie.cod_familia);
-            return View(tbespecie);
+            var pudoCrearLaNuevaEspecie = especieServicios.CrearEspecie(especie);
+            if(!pudoCrearLaNuevaEspecie) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        
+            return RedirectToAction("Index");
         }
 
-        // GET: Especie/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbespecie tbespecie = db.tbespecies.Find(id);
-            if (tbespecie == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.cod_familia = new SelectList(db.tbfamilias, "cod_familia", "nombre", tbespecie.cod_familia);
-            return View(tbespecie);
+            bool esUnIdValido = id != null;
+            if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var especieEncontrada = especieServicios.ObtenerEspeciePorID(id);
+            bool esUnaEspecieValida = especieEncontrada != null;
+            if (!esUnaEspecieValida) return HttpNotFound();
+            
+            ViewBag.cod_familia = especieServicios.ObtenerFamiliaDeEspecie(especieEncontrada);
+            return View(especieEncontrada);
         }
 
-        // POST: Especie/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_especie,nombre,descripcion,cod_familia")] tbespecie tbespecie)
+        public ActionResult Edit([Bind(Include = "cod_especie,nombre,descripcion,cod_familia")] 
+        tbespecie especie)
         {
-            if (ModelState.IsValid)
+            if ( !ModelState.IsValid )
             {
-                db.Entry(tbespecie).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_familia = especieServicios.ObtenerFamiliaDeEspecie(especie);
+                return View(especie);
             }
-            ViewBag.cod_familia = new SelectList(db.tbfamilias, "cod_familia", "nombre", tbespecie.cod_familia);
-            return View(tbespecie);
+
+            var pudoCrearLaNuevaEspecie = especieServicios.EditarEspecie(especie);
+            if ( !pudoCrearLaNuevaEspecie ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Especie/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbespecie tbespecie = db.tbespecies.Find(id);
-            if (tbespecie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbespecie);
+            return Details(id);
         }
 
-        // POST: Especie/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbespecie tbespecie = db.tbespecies.Find(id);
-            db.tbespecies.Remove(tbespecie);
-            db.SaveChanges();
+            var pudoEliminarLaEspecie = especieServicios.EliminarEspecie(id);
+            if (!pudoEliminarLaEspecie) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             return RedirectToAction("Index");
         }
 
@@ -124,7 +104,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                especieServicios.DisposeEspecie();
             }
             base.Dispose(disposing);
         }

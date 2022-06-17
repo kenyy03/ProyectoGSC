@@ -41,7 +41,7 @@ namespace SistemaVeterinaria.Controllers
         {
             ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre");
             ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE");
-            ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre");
+            ViewBag.cod_especie = new SelectList(db.TEspecie, "cod_especie", "nombre");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace SistemaVeterinaria.Controllers
 
             ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
             ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
-            ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
+            ViewBag.cod_especie = new SelectList(db.TEspecie, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }
 
@@ -79,7 +79,7 @@ namespace SistemaVeterinaria.Controllers
             }
             ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
             ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
-            ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
+            ViewBag.cod_especie = new SelectList(db.TEspecie, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }
 
@@ -98,7 +98,7 @@ namespace SistemaVeterinaria.Controllers
             }
             ViewBag.cod_dueno = new SelectList(db.TDueno, "cod_dueno", "nombre", tbpaciente.cod_dueno);
             ViewBag.cod_medico = new SelectList(db.TEmpleado, "cod_empleado", "NOMBRE", tbpaciente.cod_medico);
-            ViewBag.cod_especie = new SelectList(db.tbespecies, "cod_especie", "nombre", tbpaciente.cod_especie);
+            ViewBag.cod_especie = new SelectList(db.TEspecie, "cod_especie", "nombre", tbpaciente.cod_especie);
             return View(tbpaciente);
         }
 

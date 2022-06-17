@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
 using SistemaVeterinaria.Models;
 using SistemaVeterinaria.Services;
@@ -102,11 +96,6 @@ namespace SistemaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var empleadoEncontrado = empleadoServicios.ObtenerEmpleadoPorID(id);
-            bool esUnEmpleadoValido = empleadoEncontrado != null;
-
-            if (!esUnEmpleadoValido) return HttpNotFound();
-
             var pudoEliminarElEmpleado = empleadoServicios.EliminarEmpleado(id);
             if ( !pudoEliminarElEmpleado ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             
