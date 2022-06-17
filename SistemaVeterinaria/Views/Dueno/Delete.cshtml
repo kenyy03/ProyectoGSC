@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
 <h3>Estas seguro que quieres eliminar esto?</h3>
 <div>
@@ -50,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default btn btn-danger mr-1" /> |
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary ml-1" })
         </div>
     }
 </div>

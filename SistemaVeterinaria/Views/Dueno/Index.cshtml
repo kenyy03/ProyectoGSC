@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.DNI)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_dueno }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_dueno }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_dueno })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_dueno }, new {@class = "btn btn-warning" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.cod_dueno }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_dueno }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
