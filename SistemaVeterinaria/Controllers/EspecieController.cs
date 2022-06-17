@@ -79,8 +79,8 @@ namespace SistemaVeterinaria.Controllers
                 return View(especie);
             }
 
-            var pudoCrearLaNuevaEspecie = especieServicios.EditarEspecie(especie);
-            if ( !pudoCrearLaNuevaEspecie ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var pudoEditarLaNuevaEspecie = especieServicios.EditarEspecie(especie);
+            if ( !pudoEditarLaNuevaEspecie ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             return RedirectToAction("Index");
         }

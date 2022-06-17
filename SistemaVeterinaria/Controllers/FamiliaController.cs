@@ -7,111 +7,84 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaVeterinaria.Models;
+using SistemaVeterinaria.Services;
 
 namespace SistemaVeterinaria.Controllers
 {
     public class FamiliaController : Controller
     {
-        private VeterinariaEntities db = new VeterinariaEntities();
+        public IFamiliaServicios familiaServicios { get; set; }
 
-        // GET: Familia
+        public FamiliaController(IFamiliaServicios _familiaServicios)
+        {
+            familiaServicios = _familiaServicios;
+        }
+
+
         public ActionResult Index()
         {
-            return View(db.TFamilia.ToList());
+            return View(familiaServicios.ObtenerFamilias());
         }
 
-        // GET: Familia/Details/5
+
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbfamilia tbfamilia = db.TFamilia.Find(id);
-            if (tbfamilia == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbfamilia);
+            bool esUnIdValido = id != null;
+            if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var familiaEncontrada = familiaServicios.ObtenerFamiliaPorId(id);
+            bool esUnaFamiliaValida = familiaEncontrada != null;
+            if (!esUnaFamiliaValida) return HttpNotFound();
+            
+            return View(familiaEncontrada);
         }
 
-        // GET: Familia/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Familia/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_familia,nombre,descripcion")] tbfamilia tbfamilia)
+        public ActionResult Create([Bind(Include = "cod_familia,nombre,descripcion")] tbfamilia familia)
         {
-            if (ModelState.IsValid)
-            {
-                db.TFamilia.Add(tbfamilia);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            if (!ModelState.IsValid) return View(familia);
 
-            return View(tbfamilia);
+            var pudoCrearLaNuevaFamilia = familiaServicios.CrearFamilia(familia);
+            if ( !pudoCrearLaNuevaFamilia ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Familia/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbfamilia tbfamilia = db.TFamilia.Find(id);
-            if (tbfamilia == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbfamilia);
+            return Details(id);
         }
 
-        // POST: Familia/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_familia,nombre,descripcion")] tbfamilia tbfamilia)
+        public ActionResult Edit([Bind(Include = "cod_familia,nombre,descripcion")] tbfamilia familia)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(tbfamilia).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tbfamilia);
+            if ( !ModelState.IsValid ) return View(familia);
+
+            var pudoEditarLaFamilia = familiaServicios.EditarFamilia(familia);
+            if(!pudoEditarLaFamilia) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Familia/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbfamilia tbfamilia = db.TFamilia.Find(id);
-            if (tbfamilia == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbfamilia);
+            return Details(id);
         }
 
-        // POST: Familia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbfamilia tbfamilia = db.TFamilia.Find(id);
-            db.TFamilia.Remove(tbfamilia);
-            db.SaveChanges();
+            var pudoEliminarLaFamilia = familiaServicios.EliminarFamilia(id);
+            if ( !pudoEliminarLaFamilia ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
             return RedirectToAction("Index");
         }
 
@@ -119,7 +92,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                familiaServicios.DisposeFamilia();
             }
             base.Dispose(disposing);
         }
