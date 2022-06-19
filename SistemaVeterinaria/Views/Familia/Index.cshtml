@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            Nombre Familia
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descripcion)
+            Descripcion
         </th>
         <th></th>
     </tr>
@@ -30,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_familia }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_familia }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_familia })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_familia }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.cod_familia }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_familia }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

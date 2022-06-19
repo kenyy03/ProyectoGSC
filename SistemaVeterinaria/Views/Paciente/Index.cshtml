@@ -13,19 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            Nombre Paciente
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_nac)
+            Fecha Nacimiento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tbDUENO.nombre)
+            Nombre Dueño
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tbEmpleado.NOMBRE)
+            Nombre Medico
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tbespecie.nombre)
+            Nombre Especie
         </th>
         <th></th>
     </tr>
@@ -48,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.tbespecie.nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_paciente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_paciente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_paciente })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_paciente }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.cod_paciente }, new { @class = "btn btn-info"}) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_paciente }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

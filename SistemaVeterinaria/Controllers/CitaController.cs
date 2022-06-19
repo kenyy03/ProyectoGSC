@@ -1,131 +1,107 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
 using SistemaVeterinaria.Models;
+using SistemaVeterinaria.Services;
 
 namespace SistemaVeterinaria.Controllers
 {
     public class CitaController : Controller
     {
-        private VeterinariaEntities veterinariaContext;
+        public ICitaServicios citaServicios { get; set; }
         
-        public CitaController()
+        public CitaController(ICitaServicios _citaServicios)
         {
-            veterinariaContext = new VeterinariaEntities();
+            citaServicios = _citaServicios;
         }
 
-        // GET: Cita
         public ActionResult Index()
         {
-            var tbCitas = veterinariaContext.tbCitas.Include(t => t.tbEmpleado).Include(t => t.Tbpaciente);
-            return View(tbCitas.ToList());
+            var citas = citaServicios.ObtenerCitas();
+            return View(citas);
         }
 
-        // GET: Cita/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
-            if (tbCita == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbCita);
+            bool esUnIdValido = id != null;
+            if (!esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var citaEncontrada = citaServicios.ObtenerCitaPorID(id);
+            bool esUnaCitaValida = citaEncontrada != null;
+            if (!esUnaCitaValida) return HttpNotFound();
+            
+            return View(citaEncontrada);
         }
 
-        // GET: Cita/Create
         public ActionResult Create()
         {
-            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE");
-            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre");
+            ViewBag.cod_medico = citaServicios.ObtenerMedicosPorCita();
+            ViewBag.cod_paciente = citaServicios.ObtenerPacientesPorCita();
             return View();
         }
 
-        // POST: Cita/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_cita,fecha_cita,hora_cita,cod_paciente,descrip_cita,fecha,cod_medico")] tbCita tbCita)
+        public ActionResult Create([Bind(Include = "cod_cita,fecha_cita,hora_cita,cod_paciente,descrip_cita,fecha,cod_medico")]
+        tbCita cita)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                veterinariaContext.tbCitas.Add(tbCita);
-                veterinariaContext.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_medico = citaServicios.ObtenerMedicosPorCita(cita);
+                ViewBag.cod_paciente = citaServicios.ObtenerPacientesPorCita(cita);
+                return View(cita);
             }
 
-            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
-            return View(tbCita);
+            var pudoCrearLaNuevaCita = citaServicios.CrearCita(cita);
+            if (!pudoCrearLaNuevaCita) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            return RedirectToAction("Index");
         }
 
-        // GET: Cita/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
-            if (tbCita == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
-            return View(tbCita);
+            bool esUnIdValido = id != null;
+            if ( !esUnIdValido) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var citaEncontrada = citaServicios.ObtenerCitaPorID(id);
+            bool esUnaCitaValida = citaEncontrada != null;
+            
+            if ( !esUnaCitaValida ) return HttpNotFound();
+            
+            ViewBag.cod_medico = citaServicios.ObtenerMedicosPorCita(citaEncontrada);
+            ViewBag.cod_paciente = citaServicios.ObtenerPacientesPorCita(citaEncontrada);
+            return View(citaEncontrada);
         }
 
-        // POST: Cita/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_cita,fecha_cita,hora_cita,cod_paciente,descrip_cita,fecha,cod_medico")] tbCita tbCita)
+        public ActionResult Edit([Bind(Include = "cod_cita,fecha_cita,hora_cita,cod_paciente,descrip_cita,fecha,cod_medico")]
+        tbCita cita)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                veterinariaContext.Entry(tbCita).State = EntityState.Modified;
-                veterinariaContext.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.cod_medico = citaServicios.ObtenerMedicosPorCita(cita);
+                ViewBag.cod_paciente = citaServicios.ObtenerPacientesPorCita(cita);
+                return View(cita);
             }
-            ViewBag.cod_medico = new SelectList(veterinariaContext.TEmpleado, "cod_empleado", "NOMBRE", tbCita.cod_medico);
-            ViewBag.cod_paciente = new SelectList(veterinariaContext.Tbpacientes, "cod_paciente", "nombre", tbCita.cod_paciente);
-            return View(tbCita);
+
+            bool pudoEditarLaCita = citaServicios.EditarCita(cita);
+            if( !pudoEditarLaCita ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Cita/Delete/5
+
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
-            if (tbCita == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbCita);
+            return Details(id);
         }
 
-        // POST: Cita/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbCita tbCita = veterinariaContext.tbCitas.Find(id);
-            veterinariaContext.tbCitas.Remove(tbCita);
-            veterinariaContext.SaveChanges();
+            bool pudoEliminarLaCita = citaServicios.EliminarCita(id);
+            if (!pudoEliminarLaCita) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             return RedirectToAction("Index");
         }
 
@@ -133,7 +109,7 @@ namespace SistemaVeterinaria.Controllers
         {
             if (disposing)
             {
-                veterinariaContext.Dispose();
+                citaServicios.DisposeCita();
             }
             base.Dispose(disposing);
         }

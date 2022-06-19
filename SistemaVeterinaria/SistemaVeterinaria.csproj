@@ -231,14 +231,18 @@
       <DependentUpon>ModeloVeterinaria.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CitaServicios.cs" />
     <Compile Include="Services\EmpleadoServicios.cs" />
     <Compile Include="Services\DuenoServicios.cs" />
     <Compile Include="Services\EspecieServicios.cs" />
     <Compile Include="Services\FamiliaServicios.cs" />
+    <Compile Include="Services\ICitaServicios.cs" />
     <Compile Include="Services\IDuenoServicios.cs" />
     <Compile Include="Services\IEmpleadoServicios.cs" />
     <Compile Include="Services\IEspecieServicios.cs" />
     <Compile Include="Services\IFamiliaServicios.cs" />
+    <Compile Include="Services\IPacienteServicios.cs" />
+    <Compile Include="Services\PacienteServicios.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

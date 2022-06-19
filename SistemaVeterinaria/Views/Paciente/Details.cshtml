@@ -8,11 +8,11 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Tbpaciente</h4>
+    <h4>Paciente</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre)
+            Nombre Paciente
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fecha_nac)
+            Fecha Nacimiento
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbDUENO.nombre)
+            Nombre Dueño
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbEmpleado.NOMBRE)
+            Nombre Medico
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbespecie.nombre)
+            Nombre Especie
         </dt>
 
         <dd>
@@ -54,6 +54,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_paciente }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_paciente }, new { @class = "btn btn-warning mr-1" }) |
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary ml-1" })
 </p>
