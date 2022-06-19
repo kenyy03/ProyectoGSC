@@ -13,22 +13,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_cita)
+            @Html.DisplayName("Fecha Cita")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hora_cita)
+            @Html.DisplayName("Hora Cita")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descrip_cita)
+            @Html.DisplayName("Descripcion")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayName("Fecha")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tbEmpleado.NOMBRE)
+            @Html.DisplayName("Nombre Empleado")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tbpaciente.nombre)
+            @Html.DisplayName("Nombre Paciente")
         </th>
         <th></th>
     </tr>
@@ -54,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Tbpaciente.nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_cita }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_cita }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_cita })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_cita }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Details", "Details", new { id=item.cod_cita }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.cod_cita }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
