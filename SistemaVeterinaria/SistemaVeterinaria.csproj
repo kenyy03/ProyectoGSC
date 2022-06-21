@@ -156,11 +156,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PuestoController.cs" />
-    <Compile Include="Controllers\TelefonoDuenoController.cs" />
-    <Compile Include="Controllers\TelefonoEmpleadoController.cs" />
-    <Compile Include="Controllers\TurnoController.cs" />
-    <Compile Include="Controllers\TurnosEmpleadoController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,7 +237,9 @@
     <Compile Include="Services\IEspecieServicios.cs" />
     <Compile Include="Services\IFamiliaServicios.cs" />
     <Compile Include="Services\IPacienteServicios.cs" />
+    <Compile Include="Services\IPuestoServicios.cs" />
     <Compile Include="Services\PacienteServicios.cs" />
+    <Compile Include="Services\PuestoServicios.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -285,6 +282,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Theme\css\sb-admin-2.css" />
     <Content Include="Theme\css\sb-admin-2.min.css" />
+    <Content Include="Theme\img\1.png" />
+    <Content Include="Theme\img\2.png" />
+    <Content Include="Theme\img\3.png" />
     <Content Include="Theme\img\undraw_posting_photo.svg" />
     <Content Include="Theme\img\undraw_profile.svg" />
     <Content Include="Theme\img\undraw_profile_1.svg" />
@@ -1986,36 +1986,11 @@
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\Empleado\Index.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
-    <Content Include="Views\Usuario\Delete.cshtml" />
-    <Content Include="Views\Usuario\Details.cshtml" />
-    <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Puesto\Create.cshtml" />
     <Content Include="Views\Puesto\Delete.cshtml" />
     <Content Include="Views\Puesto\Details.cshtml" />
     <Content Include="Views\Puesto\Edit.cshtml" />
     <Content Include="Views\Puesto\Index.cshtml" />
-    <Content Include="Views\Turno\Create.cshtml" />
-    <Content Include="Views\Turno\Delete.cshtml" />
-    <Content Include="Views\Turno\Details.cshtml" />
-    <Content Include="Views\Turno\Edit.cshtml" />
-    <Content Include="Views\Turno\Index.cshtml" />
-    <Content Include="Views\TurnosEmpleado\Create.cshtml" />
-    <Content Include="Views\TurnosEmpleado\Delete.cshtml" />
-    <Content Include="Views\TurnosEmpleado\Details.cshtml" />
-    <Content Include="Views\TurnosEmpleado\Edit.cshtml" />
-    <Content Include="Views\TurnosEmpleado\Index.cshtml" />
-    <Content Include="Views\TelefonoEmpleado\Create.cshtml" />
-    <Content Include="Views\TelefonoEmpleado\Delete.cshtml" />
-    <Content Include="Views\TelefonoEmpleado\Details.cshtml" />
-    <Content Include="Views\TelefonoEmpleado\Edit.cshtml" />
-    <Content Include="Views\TelefonoEmpleado\Index.cshtml" />
-    <Content Include="Views\TelefonoDueno\Create.cshtml" />
-    <Content Include="Views\TelefonoDueno\Delete.cshtml" />
-    <Content Include="Views\TelefonoDueno\Details.cshtml" />
-    <Content Include="Views\TelefonoDueno\Edit.cshtml" />
-    <Content Include="Views\TelefonoDueno\Index.cshtml" />
     <Content Include="Views\Dueno\Create.cshtml" />
     <Content Include="Views\Dueno\Delete.cshtml" />
     <Content Include="Views\Dueno\Details.cshtml" />

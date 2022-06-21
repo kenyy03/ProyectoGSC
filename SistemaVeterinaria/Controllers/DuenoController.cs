@@ -41,7 +41,7 @@ namespace SistemaVeterinaria.Controllers
         public ActionResult Create([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] 
         tbDUENO Dueno)
         {
-            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid) return View(Dueno);
             
             var pudoCrearElNuevoDueno = duenoServicios.CrearDueno(Dueno);
             if( !pudoCrearElNuevoDueno ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -59,7 +59,7 @@ namespace SistemaVeterinaria.Controllers
         public ActionResult Edit([Bind(Include = "cod_dueno,nombre,apellido,direccion,DNI")] 
         tbDUENO Dueno)
         {
-            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid) return View(Dueno);
 
             var pudoEditarAlDueno = duenoServicios.EditarDueno(Dueno);
             if( !pudoEditarAlDueno ) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

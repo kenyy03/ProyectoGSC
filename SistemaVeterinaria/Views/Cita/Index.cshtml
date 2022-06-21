@@ -53,10 +53,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Tbpaciente.nombre)
         </td>
-        <td>
+        <td class="d-flex flex-column">
             @Html.ActionLink("Edit", "Edit", new { id=item.cod_cita }, new { @class = "btn btn-warning" })
-            @Html.ActionLink("Details", "Details", new { id=item.cod_cita }, new { @class = "btn btn-info" })
-            @Html.ActionLink("Delete", "Delete", new { id = item.cod_cita }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Details", "Details", new { id=item.cod_cita }, new { @class = "btn btn-info mt-2" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.cod_cita }, new { @class = "btn btn-danger mt-2" })
         </td>
     </tr>
 }

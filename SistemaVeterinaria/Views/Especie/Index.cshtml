@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.tbfamilia.nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_especie }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_especie }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_especie })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_especie }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.cod_especie }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_especie }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

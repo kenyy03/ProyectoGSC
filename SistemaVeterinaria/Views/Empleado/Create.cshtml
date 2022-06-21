@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.Label("fecha_ing", "Fecha de ingreso: " , htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_ing, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fecha_ing, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.fecha_ing, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,15 +66,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn-block btn-success mb-3 py-2" />
+            </div>
+            <div class="mt-4 ml-3">
+                @Html.ActionLink("Regresar", "Index", null, new {@class = "btn btn-primary" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
