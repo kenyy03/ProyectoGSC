@@ -3,34 +3,24 @@
 }
 
 <div class="jumbotron">
-    <h1>Clinica VeterinariaT</h1>
+    <h4>Clinica Veterinaria</h4>
     <p class="lead">Sitio Web en proceso, construido por estudiantes de CEUTEC</p>
-    <p>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary btn-lg" })</p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Registrar Empleados</h2>
-        <p>
-            Formulario de Registro de Empleados, donde podra ver los detalles de cada empleado,
-            editar o borrar, según sea su elección a realizar.
-        </p>
-        <p>@Html.ActionLink("Ir a Empleados", "Index", "Empleado", null, new { @class = "btn btn-default" })</p>
+<h4 class="mt-3">Servicios</h4>
+<hr/>
+
+<div class="row offset-1 mt-4">
+    <div class="card col-md-3 mr-5 align-items-center">
+        <img src="~/Theme/img/1.png" alt="Registrar Pacientes" class="img-rounded">
+        @Html.ActionLink("Ir a Pacientes", "../Paciente/Index", null, new { @class = "btn btn-primary my-3 p-2 text-center" })
     </div>
-    <div class="col-md-4">
-        <h2>Registrar Pacientes</h2>
-        <p>
-            Formulario de Registro de Pacientes, donde podra ver los detalles de cada empleado,
-            editar o borrar, según sea su elección a realizar.
-        </p>
-        <p>@Html.ActionLink("Ir a Pacientes", "Index", "Paciente", null, new { @class = "btn btn-default" })</p>
+    <div class="card col-md-3 mr-5 align-items-center">
+        <img src="~/Theme/img/2.png" alt="Registrar Duenos" class="img-rounded">
+        @Html.ActionLink("Ir a Dueños", "../Dueno/Index", null, new { @class = "btn btn-primary my-3 p-2 text-center" })
     </div>
-    <div class="col-md-4">
-        <h2>Reservar una cita</h2>
-        <p>
-            Formulario donde el usuario podrá reservar una cita para su mascota, también tendra opciones
-            de ver los detalles, editar o borrar la cita, según sea su elección a realizar. 
-        </p>
-        <p>@Html.ActionLink("Ir a Citas", "Index", "Cita", null, new { @class = "btn btn-default" })</p>
+    <div class="card col-md-3 align-items-center">
+        <img src="~/Theme/img/3.png" alt="Registrar Empleados" class="img-rounded">
+        @Html.ActionLink("Ir a Empleados", "../Empleado/Index", null, new { @class = "btn btn-primary my-3 p-2 text-center" })
     </div>
 </div>
