@@ -35,6 +35,7 @@ namespace SistemaVeterinaria
             container.RegisterType<IFamiliaServicios, FamiliaServicios>();
             container.RegisterType<ICitaServicios, CitaServicios>();
             container.RegisterType<IPacienteServicios, PacienteServicios>();
+            container.RegisterType<IPuestoServicios, PuestoServicios>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
